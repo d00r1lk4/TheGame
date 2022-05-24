@@ -10,6 +10,8 @@
 #include "Entity.h"
 #include "Player.h"
 
+#include "Berries.h"
+
 #include "Constants.h"
 
 #include "Camera.h"
@@ -163,6 +165,12 @@ private:
 			window.draw((*entityIterator)->getSprite());
 		}
 	}
+	void RenderBerries(sf::RenderWindow &window, std::list<Berries*> &berries) {
+		std::list<Berries*>::iterator berriesIterator;
+		for (berriesIterator = berries.begin(); berriesIterator != berries.end(); ++berriesIterator) {
+			window.draw((*berriesIterator)->getSprite());
+		}
+	}
 
 	///////
 	void RanderParticles(sf::RenderWindow &window, Entity* entity) {
@@ -200,12 +208,13 @@ public:
 		playerCamera.reset(sf::FloatRect(0, 0, Final::rezolution, Final::rezolution));
 	}
 
-	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, float time) {
+	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, float time) {
 		window.clear(sf::Color(33, 31, 48));
 
 		RenderMap(window, lvl);
 
 		RenderEntities(window, entities);
+		RenderBerries(window, berries);
 		//RanderParticles(window, entities.front());
 
 		if (entities.front()->checkAlive()) {

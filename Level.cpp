@@ -9,6 +9,10 @@ class Entity;
 #include "AngryPig.h"
 #include "BlueBird.h"
 
+#include "Cherries.h"
+#include "Strawberry.h"
+#include "Apple.h"
+
 #include <list>
 #include <vector>
 
@@ -62,15 +66,39 @@ std::list<Entity*> Level::getEntities() {
 
 	return entities;
 }
+std::list<Berries*> Level::getBerries() {
+	std::list<Berries*> berries;
+	for (int i = 0; i < HEIGTH; ++i) {
+		for (int j = 0; j < WIDTH; ++j) {
+			if (TileMap[i][j] == 'c') {
+				TileMap[i][j] = ' ';
+				berries.push_back(new Cherries(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+			}
+			if (TileMap[i][j] == 's') {
+				TileMap[i][j] = ' ';
+				berries.push_back(new Strawberry(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+			}
+			if (TileMap[i][j] == 'a') {
+				TileMap[i][j] = ' ';
+				berries.push_back(new Apple(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+			}
+		}
+	}
+	//
 
-void Level::Update(std::list<Entity*> &entities, std::vector<Level*> &levels) {
+	return berries;
+}
+
+void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::vector<Level*> &levels) {
 	Player* player = dynamic_cast<Player*>(entities.front());
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();
 		currentLevel = player->getCurrentLevel();
-		clearObjects(entities);
+		clearEntities(entities);
+		clearBerries(berries);
 
-		entities = levels[currentLevel]->getEntities();
+		entities = levels[Level::getCurrentLevel()]->getEntities();
+		berries = levels[Level::getCurrentLevel()]->getBerries();
 
 		player = dynamic_cast<Player*>(entities.front());
 		player->setScore(score);
@@ -78,20 +106,36 @@ void Level::Update(std::list<Entity*> &entities, std::vector<Level*> &levels) {
 	}
 }
 
-void Level::clearObjects(std::list<Entity*>& entities) {
+void Level::clearEntities(std::list<Entity*>& entities) {
 	for (auto elem : entities) {
 		delete elem;
 	}
 	entities.clear();
 }
-void Level::reload(std::list<Entity*>& entities, std::vector<Level*>& levels, int score) {
+void Level::clearBerries(std::list<Berries*>& berries) {
+	for (auto elem : berries) {
+		delete elem;
+	}
+	berries.clear();
+}
+void Level::clearTraps(std::list<Traps*>& traps) {
+	for (auto elem : traps) {
+		delete elem;
+	}
+	traps.clear();
+}
+
+void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels, int score) {
 	isRealod = true;
 
-	clearObjects(entities);
+	clearEntities(entities);
+	clearBerries(berries);
 
 	copyLevel(this->TileMap, this->ConstTileMap);
 
 	entities = levels[Level::getCurrentLevel()]->getEntities();
+	berries = levels[Level::getCurrentLevel()]->getBerries();
+
 	Player* player = dynamic_cast<Player*>(entities.front());
 
 	player->setLevel(Level::getCurrentLevel());

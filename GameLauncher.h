@@ -8,12 +8,14 @@
 #include <iostream>
 
 #include "Player.h"
+#include "Entity.h"
+
+#include "Berries.h"
 
 #include <vector>
 #include <list>
 #include <vector>
 
-#include "AngryPig.h"
 
 #include "testMap.h"
 #include "testMap2.h"
@@ -83,6 +85,7 @@ public:
 	void LaunchGame() {
 		std::vector<Level*> levels = setLevels();
 		std::list<Entity*> entities = levels[Level::getCurrentLevel()]->getEntities();
+		std::list<Berries*> berries = levels[Level::getCurrentLevel()]->getBerries();
 		Player* player;
 
 		//
@@ -115,20 +118,20 @@ public:
 
 				if (event.type == sf::Event::KeyPressed) {
 					if(/*!player->checkAlive() && */sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-						levels[Level::getCurrentLevel()]->reload(entities, levels, player->getScore());
+						levels[Level::getCurrentLevel()]->reload(entities, berries, levels, player->getScore());
 					}
 				}
 					
 			}
 			
 
-			levels[Level::getCurrentLevel()]->Update(entities, levels);
+			levels[Level::getCurrentLevel()]->Next(entities, berries, levels);
 
 			GameEngine::Physics.Collision(entities);
 			GameEngine::Physics.Update(time, entities, levels[Level::getCurrentLevel()]);
 
 
-			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, time);
+			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, berries, time);
 		}
 	}
 

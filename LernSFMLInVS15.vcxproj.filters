@@ -34,13 +34,25 @@
     <Filter Include="Заголовочные файлы\Levels">
       <UniqueIdentifier>{aee476ff-3833-4303-908d-44913d596b8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Animation">
+      <UniqueIdentifier>{eaa567be-4be8-44b7-ba09-14b679de3ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Objects\Player">
+      <UniqueIdentifier>{bdcd3fe9-8b8e-4d48-b570-30a05b6ff045}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Levels\Maps">
+      <UniqueIdentifier>{b7bc808a-f6a4-4a2a-a43c-68fa842a4199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Objects\Berries">
+      <UniqueIdentifier>{a4876437-bafc-4c31-b8ee-ca7ed0a32a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Objects\Berries">
+      <UniqueIdentifier>{43c3899a-faa7-4d77-9aaa-4539b4d14c40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="Constants.h">
-      <Filter>Заголовочные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Файлы ресурсов\Objects</Filter>
@@ -48,17 +60,26 @@
     <ClCompile Include="AngryPig.cpp">
       <Filter>Файлы ресурсов\Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
-    </ClCompile>
     <ClCompile Include="BlueBird.cpp">
       <Filter>Файлы ресурсов\Objects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Constants.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Заголовочные файлы\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Cherries.cpp">
+      <Filter>Файлы ресурсов\Objects\Berries</Filter>
+    </ClCompile>
+    <ClCompile Include="Strawberry.cpp">
+      <Filter>Файлы ресурсов\Objects\Berries</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Файлы ресурсов\Objects\Berries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Заголовочные файлы\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Заголовочные файлы\Objects\Parents</Filter>
     </ClInclude>
@@ -67,9 +88,6 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Заголовочные файлы\Objects\Parents</Filter>
-    </ClInclude>
-    <ClInclude Include="testMap.h">
-      <Filter>Заголовочные файлы\Levels</Filter>
     </ClInclude>
     <ClInclude Include="GameLauncher.h">
       <Filter>Заголовочные файлы\GameEngine</Filter>
@@ -89,29 +107,47 @@
     <ClInclude Include="AudioRenderingEngine.h">
       <Filter>Заголовочные файлы\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Заголовочные файлы\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="testMap2.h">
-      <Filter>Заголовочные файлы\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="BlueBird.h">
       <Filter>Заголовочные файлы\Objects\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAnimation.h">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="AngryPigAnimation.h">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
+      <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Заголовочные файлы\Animation</Filter>
     </ClInclude>
     <ClInclude Include="BlueBirdAnimation.h">
-      <Filter>Заголовочные файлы\GameEngine</Filter>
+      <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAnimation.h">
+      <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Заголовочные файлы\Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Заголовочные файлы\Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap.h">
+      <Filter>Заголовочные файлы\Levels\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap2.h">
+      <Filter>Заголовочные файлы\Levels\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Заголовочные файлы\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Berries.h">
+      <Filter>Заголовочные файлы\Objects\Parents</Filter>
+    </ClInclude>
+    <ClInclude Include="Cherries.h">
+      <Filter>Заголовочные файлы\Objects\Berries</Filter>
+    </ClInclude>
+    <ClInclude Include="Strawberry.h">
+      <Filter>Заголовочные файлы\Objects\Berries</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Заголовочные файлы\Objects\Berries</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

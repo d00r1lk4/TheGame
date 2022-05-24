@@ -26,7 +26,9 @@ private:
 
 	void copyLevel(sf::String* first, const sf::String* second);
 
-	void clearObjects(std::list<Entity*>& entities);
+	void clearEntities(std::list<Entity*>& entities);
+	void clearBerries(std::list<Berries*>& berries);
+	void clearTraps(std::list<Traps*>& traps);
 
 public:
 	bool isReloading = false;
@@ -45,7 +47,7 @@ public:
 		gameTime -= time;
 	}
 
-	void Update(std::list<Entity*>& entities, std::vector<Level*>& levels);
+	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels);
 
 
 	int getHeigth() {
@@ -62,7 +64,7 @@ public:
 	bool &checkReload() {
 		return isRealod;
 	}
-	void reload(std::list<Entity*>& entities, std::vector<Level*>& levels, int score);
+	void reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels, int score);
 
 	static int getCurrentLevel() {
 		return currentLevel;
