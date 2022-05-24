@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Berries.h"
 
 #include <iostream>
 
@@ -11,7 +12,7 @@ private:
 public:
 	PhysicsEngine() {}
 
-	void Collision(std::list<Entity*>& entities) {
+	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries) {
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//collision with enemies
@@ -35,14 +36,27 @@ public:
 			}
 		}
 		//
+
+		std::list<Berries*>::iterator berriesIterator;
+		for (berriesIterator = berries.begin(); berriesIterator != berries.end(); ++berriesIterator) {
+			if ((*berriesIterator)->getRect().intersects(player->getRect()) && player->checkAlive() && !(*berriesIterator)->checkCollected()) {
+				player->setScore(player->getScore() + 100);
+				(*berriesIterator)->collect();
+			}
+		}
 	}
-	void Update(float time, std::list<Entity*>& entities, Level *lvl) {
+	void Update(float time, std::list<Entity*>& entities, std::list<Berries*>& berries, Level *lvl) {
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//UPDATE
 		player->update(time, lvl);
 		for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
 			(*entitiesIterator)->update(time, lvl);
+		}
+
+		std::list<Berries*>::iterator berriesIterator;
+		for (berriesIterator = berries.begin(); berriesIterator != berries.end(); ++berriesIterator) {
+			(*berriesIterator)->update(time);
 		}
 		//
 	}

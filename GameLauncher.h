@@ -127,8 +127,8 @@ public:
 
 			levels[Level::getCurrentLevel()]->Next(entities, berries, levels);
 
-			GameEngine::Physics.Collision(entities);
-			GameEngine::Physics.Update(time, entities, levels[Level::getCurrentLevel()]);
+			GameEngine::Physics.Collision(entities, berries);
+			GameEngine::Physics.Update(time, entities, berries, levels[Level::getCurrentLevel()]);
 
 
 			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, berries, time);

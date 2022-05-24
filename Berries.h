@@ -1,8 +1,12 @@
 #pragma once
 
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 #include "Object.h"
+
+#include "BerriesAnimation.h"
 
 class Berries : public Object {
 private:
@@ -23,17 +27,35 @@ protected:
 
 	bool isCollected = false;
 
+	BerriesAnimation Animator{ this, 32, 32 };
+
+	enum State {stay, collected};
+	State state = stay;
+
 public:
 	virtual void update(float time) {
-		//add anim
+		switch (state)
+		{
+		case stay:
+			Animator.Play("stay", time);
+			break;
+		case collected:
+			Animator.Play("collected", time);
+			break;
+		}
 
-		sprite.setPosition(xPos, yPos);
+		if (isCollected) {
+			state = collected;
+		}
+		else {
+			state = stay;
+		}
 	}
 
-	bool chackCollected() {
+	bool checkCollected() {
 		return isCollected;
 	}
-	void collected() {
+	void collect() {
 		isCollected = true;
 	}
 };

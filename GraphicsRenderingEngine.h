@@ -159,6 +159,8 @@ private:
 		window.draw(playerScoreText);
 		window.draw(timerText);
 	}
+
+
 	void RenderEntities(sf::RenderWindow &window, std::list<Entity*> &entities) {
 		std::list<Entity*>::iterator entityIterator;
 		for (entityIterator = entities.begin(); entityIterator != entities.end(); ++entityIterator) {

@@ -207,6 +207,7 @@
     <ClInclude Include="Apple.h" />
     <ClInclude Include="AudioRenderingEngine.h" />
     <ClInclude Include="Berries.h" />
+    <ClInclude Include="BerriesAnimation.h" />
     <ClInclude Include="BlueBird.h" />
     <ClInclude Include="BlueBirdAnimation.h" />
     <ClInclude Include="Camera.h" />

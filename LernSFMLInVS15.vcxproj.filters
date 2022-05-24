@@ -149,5 +149,8 @@
     <ClInclude Include="Apple.h">
       <Filter>Заголовочные файлы\Objects\Berries</Filter>
     </ClInclude>
+    <ClInclude Include="BerriesAnimation.h">
+      <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
