@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Objects">
+      <UniqueIdentifier>{a7b4f849-28d7-4719-8c0f-bebdf08e86bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Objects">
+      <UniqueIdentifier>{66b6de3f-55c3-44e0-8489-51a00885e81c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Objects\Parents">
+      <UniqueIdentifier>{d6836c43-b468-41f7-9ee8-946f88e175ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\GameEngine">
+      <UniqueIdentifier>{21c56262-407d-4c0b-9c6f-f9ee5b3fbadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Objects\Enemies">
+      <UniqueIdentifier>{c07551fd-3c10-4e38-a26b-d4d91f2bcbd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Objects\Enemies">
+      <UniqueIdentifier>{77761058-48c7-4d05-96c2-48ea02d56c09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Levels">
+      <UniqueIdentifier>{aee476ff-3833-4303-908d-44913d596b8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Файлы ресурсов\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="AngryPig.cpp">
+      <Filter>Файлы ресурсов\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueBird.cpp">
+      <Filter>Файлы ресурсов\Objects\Enemies</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Player.h">
+      <Filter>Заголовочные файлы\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Заголовочные файлы\Objects\Parents</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Заголовочные файлы\Objects\Parents</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Заголовочные файлы\Objects\Parents</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap.h">
+      <Filter>Заголовочные файлы\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLauncher.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="AngryPig.h">
+      <Filter>Заголовочные файлы\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsRenderingEngine.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioRenderingEngine.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Заголовочные файлы\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap2.h">
+      <Filter>Заголовочные файлы\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueBird.h">
+      <Filter>Заголовочные файлы\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAnimation.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="AngryPigAnimation.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueBirdAnimation.h">
+      <Filter>Заголовочные файлы\GameEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
