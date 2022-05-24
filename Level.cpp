@@ -13,6 +13,8 @@ class Entity;
 #include "Strawberry.h"
 #include "Apple.h"
 
+#include "Spike.h"
+
 #include <list>
 #include <vector>
 
@@ -84,21 +86,35 @@ std::list<Berries*> Level::getBerries() {
 			}
 		}
 	}
-	//
 
 	return berries;
 }
+std::list<Traps*> Level::getTraps() {
+	std::list<Traps*> traps;
+	for (int i = 0; i < HEIGTH; ++i) {
+		for (int j = 0; j < WIDTH; ++j) {
+			if (TileMap[i][j] == '^') {
+				TileMap[i][j] = ' ';
+				traps.push_back(new Spike(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+			}
+		}
+	}
 
-void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::vector<Level*> &levels) {
+	return traps;
+}
+
+void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*> &levels) {
 	Player* player = dynamic_cast<Player*>(entities.front());
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();
 		currentLevel = player->getCurrentLevel();
 		clearEntities(entities);
 		clearBerries(berries);
+		clearTraps(traps);
 
 		entities = levels[Level::getCurrentLevel()]->getEntities();
 		berries = levels[Level::getCurrentLevel()]->getBerries();
+		traps = levels[Level::getCurrentLevel()]->getTraps();
 
 		player = dynamic_cast<Player*>(entities.front());
 		player->setScore(score);
@@ -125,16 +141,18 @@ void Level::clearTraps(std::list<Traps*>& traps) {
 	traps.clear();
 }
 
-void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels, int score) {
+void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels, int score) {
 	isRealod = true;
 
 	clearEntities(entities);
 	clearBerries(berries);
+	clearTraps(traps);
 
 	copyLevel(this->TileMap, this->ConstTileMap);
 
 	entities = levels[Level::getCurrentLevel()]->getEntities();
 	berries = levels[Level::getCurrentLevel()]->getBerries();
+	traps = levels[Level::getCurrentLevel()]->getTraps();
 
 	Player* player = dynamic_cast<Player*>(entities.front());
 

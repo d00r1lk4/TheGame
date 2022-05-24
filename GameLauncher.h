@@ -86,11 +86,11 @@ public:
 		std::vector<Level*> levels = setLevels();
 		std::list<Entity*> entities = levels[Level::getCurrentLevel()]->getEntities();
 		std::list<Berries*> berries = levels[Level::getCurrentLevel()]->getBerries();
+		std::list<Traps*> traps = levels[Level::getCurrentLevel()]->getTraps();
+
 		Player* player;
 
 		//
-
-
 		while (window.isOpen()) {
 			float time = checkPause();
 
@@ -118,20 +118,20 @@ public:
 
 				if (event.type == sf::Event::KeyPressed) {
 					if(/*!player->checkAlive() && */sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-						levels[Level::getCurrentLevel()]->reload(entities, berries, levels, player->getScore());
+						levels[Level::getCurrentLevel()]->reload(entities, berries, traps, levels, player->getScore());
 					}
 				}
 					
 			}
 			
 
-			levels[Level::getCurrentLevel()]->Next(entities, berries, levels);
+			levels[Level::getCurrentLevel()]->Next(entities, berries, traps, levels);
 
-			GameEngine::Physics.Collision(entities, berries);
-			GameEngine::Physics.Update(time, entities, berries, levels[Level::getCurrentLevel()]);
+			GameEngine::Physics.Collision(entities, berries, traps);
+			GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()]);
 
 
-			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, berries, time);
+			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, berries, traps, time);
 		}
 	}
 

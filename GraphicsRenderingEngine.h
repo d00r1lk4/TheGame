@@ -12,6 +12,8 @@
 
 #include "Berries.h"
 
+#include "Traps.h"
+
 #include "Constants.h"
 
 #include "Camera.h"
@@ -173,6 +175,12 @@ private:
 			window.draw((*berriesIterator)->getSprite());
 		}
 	}
+	void RenderTraps(sf::RenderWindow& window, std::list<Traps*>& traps) {
+		std::list<Traps*>::iterator trapsIterator;
+		for (trapsIterator = traps.begin(); trapsIterator != traps.end(); ++trapsIterator) {
+			window.draw((*trapsIterator)->getSprite());
+		}
+	}
 
 	///////
 	void RanderParticles(sf::RenderWindow &window, Entity* entity) {
@@ -210,13 +218,14 @@ public:
 		playerCamera.reset(sf::FloatRect(0, 0, Final::rezolution, Final::rezolution));
 	}
 
-	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, float time) {
+	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, float time) {
 		window.clear(sf::Color(33, 31, 48));
 
 		RenderMap(window, lvl);
 
 		RenderEntities(window, entities);
 		RenderBerries(window, berries);
+		RenderTraps(window, traps);
 		//RanderParticles(window, entities.front());
 
 		if (entities.front()->checkAlive()) {

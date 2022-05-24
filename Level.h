@@ -47,7 +47,7 @@ public:
 		gameTime -= time;
 	}
 
-	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels);
+	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels);
 
 
 	int getHeigth() {
@@ -64,7 +64,7 @@ public:
 	bool &checkReload() {
 		return isRealod;
 	}
-	void reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::vector<Level*>& levels, int score);
+	void reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels, int score);
 
 	static int getCurrentLevel() {
 		return currentLevel;

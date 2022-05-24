@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "Berries.h"
+#include "Traps.h"
 
 #include <iostream>
 
@@ -12,7 +13,7 @@ private:
 public:
 	PhysicsEngine() {}
 
-	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries) {
+	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps) {
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//collision with enemies
@@ -44,8 +45,15 @@ public:
 				(*berriesIterator)->collect();
 			}
 		}
+
+		std::list<Traps*>::iterator trapsIterator;
+		for (trapsIterator = traps.begin(); trapsIterator != traps.end(); ++trapsIterator) {
+			if ((*trapsIterator)->getRect().intersects(player->getRect()) && player->checkAlive()) {
+				player->dead();
+			}
+		}
 	}
-	void Update(float time, std::list<Entity*>& entities, std::list<Berries*>& berries, Level *lvl) {
+	void Update(float time, std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Level *lvl) {
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//UPDATE
@@ -57,6 +65,11 @@ public:
 		std::list<Berries*>::iterator berriesIterator;
 		for (berriesIterator = berries.begin(); berriesIterator != berries.end(); ++berriesIterator) {
 			(*berriesIterator)->update(time);
+		}
+
+		std::list<Traps*>::iterator trapsIterator;
+		for (trapsIterator = traps.begin(); trapsIterator != traps.end(); ++trapsIterator) {
+			(*trapsIterator)->update(time);
 		}
 		//
 	}

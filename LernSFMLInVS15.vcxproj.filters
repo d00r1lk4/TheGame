@@ -49,6 +49,12 @@
     <Filter Include="Файлы ресурсов\Objects\Berries">
       <UniqueIdentifier>{43c3899a-faa7-4d77-9aaa-4539b4d14c40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Objects\Traps">
+      <UniqueIdentifier>{4fa03d84-28b8-4956-8146-baaa5d8648ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Objects\Traps">
+      <UniqueIdentifier>{1f98554b-fde5-4446-84c3-12b39912e8df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="Apple.cpp">
       <Filter>Файлы ресурсов\Objects\Berries</Filter>
+    </ClCompile>
+    <ClCompile Include="Spike.cpp">
+      <Filter>Файлы ресурсов\Objects\Traps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +160,12 @@
     </ClInclude>
     <ClInclude Include="BerriesAnimation.h">
       <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Traps.h">
+      <Filter>Заголовочные файлы\Objects\Traps</Filter>
+    </ClInclude>
+    <ClInclude Include="Spike.h">
+      <Filter>Заголовочные файлы\Objects\Traps</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
