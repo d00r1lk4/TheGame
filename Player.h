@@ -53,4 +53,8 @@ public:
 	void revive() {
 		isAlive = true;
 	}
+
+	void nextLevel() {
+		++currentLevel;
+	}
 };

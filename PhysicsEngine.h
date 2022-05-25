@@ -4,16 +4,19 @@
 #include "Berries.h"
 #include "Traps.h"
 
+#include "Checkpoint.h"
+#include "NextLevel.h"
+
 #include <iostream>
 
 class PhysicsEngine {
 private:
-
+	bool nextLevel = false;
 
 public:
 	PhysicsEngine() {}
 
-	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps) {
+	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish) {
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//collision with enemies
@@ -52,8 +55,33 @@ public:
 				player->dead();
 			}
 		}
+
+		if (finish->getRect().intersects(player->getRect())) {
+			if (finish) {
+				if (finish->toString() == "NextLevel" && !nextLevel) {
+					NextLevel* next = dynamic_cast<NextLevel*>(finish);
+					if (next->canGo()) {
+						//addAnim
+						player->nextLevel();
+						nextLevel = true;
+					}
+				}
+				else if (finish->toString() == "Finish") {
+					//add anim
+					//final scene
+				}
+			}
+		}
+
 	}
-	void Update(float time, std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Level *lvl) {
+	void Update(
+		float time,
+		std::list<Entity*>& entities,
+		std::list<Berries*>& berries,
+		std::list<Traps*>& traps,
+		Checkpoint*& const finish,
+		Level *lvl	)
+	{
 		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//UPDATE
@@ -70,6 +98,10 @@ public:
 		std::list<Traps*>::iterator trapsIterator;
 		for (trapsIterator = traps.begin(); trapsIterator != traps.end(); ++trapsIterator) {
 			(*trapsIterator)->update(time);
+		}
+
+		if (finish) {
+			finish->update(time);
 		}
 		//
 	}

@@ -15,6 +15,9 @@ class Entity;
 
 #include "Spike.h"
 
+#include "Finish.h"
+#include "NextLevel.h"
+
 #include <list>
 #include <vector>
 
@@ -102,19 +105,41 @@ std::list<Traps*> Level::getTraps() {
 
 	return traps;
 }
+Checkpoint *Level::getFinish() {
+	Checkpoint* finish = nullptr;
+	for (int i = 0; i < HEIGTH; ++i) {
+		for (int j = 0; j < WIDTH; ++j) {
+			if (TileMap[i][j] == 'F') {
+				TileMap[i][j] = ' ';
+				finish = new Finish(j * Final::tilesRezolution, i * Final::tilesRezolution + 2);
+			}
+			if (TileMap[i][j] == 'N') {
+				TileMap[i][j] = ' ';
+				finish = new NextLevel(j * Final::tilesRezolution, i * Final::tilesRezolution + 2);
+			}
+		}
+	}
 
-void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*> &levels) {
+	return finish;
+}
+
+void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*> &levels) {
 	Player* player = dynamic_cast<Player*>(entities.front());
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();
 		currentLevel = player->getCurrentLevel();
+
 		clearEntities(entities);
 		clearBerries(berries);
 		clearTraps(traps);
+		if (finish) {
+			delete finish;
+		}
 
 		entities = levels[Level::getCurrentLevel()]->getEntities();
 		berries = levels[Level::getCurrentLevel()]->getBerries();
 		traps = levels[Level::getCurrentLevel()]->getTraps();
+		finish = levels[Level::getCurrentLevel()]->getFinish();
 
 		player = dynamic_cast<Player*>(entities.front());
 		player->setScore(score);
@@ -141,18 +166,23 @@ void Level::clearTraps(std::list<Traps*>& traps) {
 	traps.clear();
 }
 
-void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels, int score) {
+void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*>& levels, int score) {
 	isRealod = true;
 
 	clearEntities(entities);
 	clearBerries(berries);
 	clearTraps(traps);
+	if (finish) {
+		delete finish;
+	}
+
 
 	copyLevel(this->TileMap, this->ConstTileMap);
 
 	entities = levels[Level::getCurrentLevel()]->getEntities();
 	berries = levels[Level::getCurrentLevel()]->getBerries();
 	traps = levels[Level::getCurrentLevel()]->getTraps();
+	finish = levels[Level::getCurrentLevel()]->getFinish();
 
 	Player* player = dynamic_cast<Player*>(entities.front());
 

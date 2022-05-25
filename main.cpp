@@ -42,7 +42,7 @@ int main() {
 	versionText.setColor(sf::Color::White);
 	versionText.setPosition(window.getSize().x - 80, window.getSize().y - 20);
 
-	controlsText.setString("A, A - move\nSpace - jump\nESC - pause");
+	controlsText.setString("A, D - move\nSpace - jump\nESC - pause");
 	controlsText.setFont(font);
 	controlsText.setCharacterSize(16);
 	controlsText.setColor(sf::Color::White);

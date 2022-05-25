@@ -212,13 +212,16 @@
     <ClInclude Include="BlueBird.h" />
     <ClInclude Include="BlueBirdAnimation.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Cherries.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Finish.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameLauncher.h" />
     <ClInclude Include="GraphicsRenderingEngine.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="NextLevel.h" />
     <ClInclude Include="PlayerAnimation.h" />
     <ClInclude Include="Spike.h" />
     <ClInclude Include="Strawberry.h" />

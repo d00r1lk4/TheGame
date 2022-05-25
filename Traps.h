@@ -16,7 +16,7 @@ protected:
 		xPos = x + 8;
 		yPos = y + 8;
 
-		sprite.setPosition(xPos, yPos);
+		sprite.setPosition(xPos, yPos - 2);
 		sprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
 	}
 

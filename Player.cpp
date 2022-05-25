@@ -125,14 +125,6 @@ void Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 				}
 			}
 		}
-
-		if (lvl->getTileMap()[i][j] == 'F') {
-			//animation
-			
-			lvl->getTileMap()[i][j] = ' ';
-
-			++currentLevel;
-		}
 	}
 }
 

@@ -12,6 +12,8 @@
 
 #include "Berries.h"
 
+#include "Checkpoint.h"
+
 #include <vector>
 #include <list>
 #include <vector>
@@ -78,6 +80,7 @@ public:
 		std::list<Entity*> entities = levels[Level::getCurrentLevel()]->getEntities();
 		std::list<Berries*> berries = levels[Level::getCurrentLevel()]->getBerries();
 		std::list<Traps*> traps = levels[Level::getCurrentLevel()]->getTraps();
+		Checkpoint *finish = levels[Level::getCurrentLevel()]->getFinish();
 
 		Player* player;
 
@@ -107,20 +110,21 @@ public:
 
 				if (event.type == sf::Event::KeyPressed) {
 					if(/*!player->checkAlive() && */sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-						levels[Level::getCurrentLevel()]->reload(entities, berries, traps, levels, player->getScore());
+						levels[Level::getCurrentLevel()]->reload(entities, berries, traps, finish, levels, player->getScore());
 					}
 				}
 					
 			}
 			
 
-			levels[Level::getCurrentLevel()]->Next(entities, berries, traps, levels);
 
-			GameEngine::Physics.Collision(entities, berries, traps);
-			GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()]);
+			GameEngine::Physics.Collision(entities, berries, traps, finish);
 
+			levels[Level::getCurrentLevel()]->Next(entities, berries, traps, finish, levels);
 
-			GameEngine::GraphicsRender.Render(*window, levels[Level::getCurrentLevel()], entities, berries, traps, time);
+			GameEngine::Physics.Update(time, entities, berries, traps, finish, levels[Level::getCurrentLevel()]);
+
+			GameEngine::GraphicsRender.Render(*window, levels[Level::getCurrentLevel()], entities, berries, traps, finish, time);
 		}
 
 		for (auto &elem : levels) {
@@ -142,6 +146,10 @@ public:
 			delete elem;
 		}
 		traps.clear();
+
+		if (finish) {
+			delete finish;
+		}
 
 		Level::reset();
 		

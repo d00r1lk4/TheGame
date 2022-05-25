@@ -14,6 +14,8 @@
 
 #include "Traps.h"
 
+#include "Checkpoint.h"
+
 #include "Constants.h"
 
 #include "Camera.h"
@@ -78,9 +80,7 @@ private:
 		backgroundSprite.setTexture(backgroundTexture);
 	}
 
-
-	void RenderMap(sf::RenderWindow& window, Level *lvl) {
-		//map		//FIXME
+	void RenderBackground(sf::RenderWindow& window, Level* lvl) {
 		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
 			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
 				if (lvl->getTileMap()[i][j] == ' ') {
@@ -96,25 +96,31 @@ private:
 					backgroundSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
 					window.draw(backgroundSprite);
 				}
-				//if (TileMap[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(336, 0, 16, 16)); }
-				else {
-					if (lvl->getTileMap()[i][j] == '0') { mapSprite.setTextureRect(sf::IntRect(96, 32, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '1') { mapSprite.setTextureRect(sf::IntRect(112, 32, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '2') { mapSprite.setTextureRect(sf::IntRect(128, 32, 16, 16)); }
-									  
-					if (lvl->getTileMap()[i][j] == '3') { mapSprite.setTextureRect(sf::IntRect(96, 16, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '4') { mapSprite.setTextureRect(sf::IntRect(112, 16, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '5') { mapSprite.setTextureRect(sf::IntRect(128, 16, 16, 16)); }
-									  
-					if (lvl->getTileMap()[i][j] == '6') { mapSprite.setTextureRect(sf::IntRect(96, 0, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '7') { mapSprite.setTextureRect(sf::IntRect(112, 0, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
+			}
+		}
+	}
+	void RenderMap(sf::RenderWindow& window, Level *lvl) {
+		//map		//FIXME
+		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
+			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
+				if (lvl->getTileMap()[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(320, 0, 16, 16)); }
 
-					//if (TileMap[i][j] == 'c') { mapSprite.setTextureRect(sf::IntRect(0, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '0') { mapSprite.setTextureRect(sf::IntRect(96, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '1') { mapSprite.setTextureRect(sf::IntRect(112, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '2') { mapSprite.setTextureRect(sf::IntRect(128, 32, 16, 16)); }
+								  
+				if (lvl->getTileMap()[i][j] == '3') { mapSprite.setTextureRect(sf::IntRect(96, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '4') { mapSprite.setTextureRect(sf::IntRect(112, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '5') { mapSprite.setTextureRect(sf::IntRect(128, 16, 16, 16)); }
+								  
+				if (lvl->getTileMap()[i][j] == '6') { mapSprite.setTextureRect(sf::IntRect(96, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '7') { mapSprite.setTextureRect(sf::IntRect(112, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
 
-					mapSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
-					window.draw(mapSprite);
-				}
+				//if (TileMap[i][j] == 'c') { mapSprite.setTextureRect(sf::IntRect(0, 0, 16, 16)); }
+
+				mapSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
+				window.draw(mapSprite);
 			}
 		}
 		//
@@ -181,6 +187,7 @@ private:
 			window.draw((*trapsIterator)->getSprite());
 		}
 	}
+	//void RenderFinish(sf::RenderWindow& window, Checkpoint*& const finish) { window.draw(finish->getSprite()); }
 
 	///////
 	void RanderParticles(sf::RenderWindow &window, Entity* entity) {
@@ -218,14 +225,25 @@ public:
 		playerCamera.reset(sf::FloatRect(0, 0, Final::rezolution, Final::rezolution));
 	}
 
-	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, float time) {
+	void Render(
+		sf::RenderWindow &window,
+		Level *lvl,
+		std::list<Entity*> &entities,
+		std::list<Berries*>& berries,
+		std::list<Traps*>& traps,
+		Checkpoint*& const finish,
+		float time	)
+	{
 		window.clear(sf::Color(33, 31, 48));
 
-		RenderMap(window, lvl);
+		RenderBackground(window, lvl);
 
 		RenderEntities(window, entities);
 		RenderBerries(window, berries);
 		RenderTraps(window, traps);
+		//RenderFinish(window, finish);
+
+		RenderMap(window, lvl);
 		//RanderParticles(window, entities.front());
 
 		if (entities.front()->checkAlive()) {

@@ -55,6 +55,9 @@
     <Filter Include="Файлы ресурсов\Objects\Traps">
       <UniqueIdentifier>{1f98554b-fde5-4446-84c3-12b39912e8df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Levels\Checkpoints">
+      <UniqueIdentifier>{dda732ec-ead1-4001-a55d-1c991cf1ee77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -166,6 +169,15 @@
     </ClInclude>
     <ClInclude Include="Spike.h">
       <Filter>Заголовочные файлы\Objects\Traps</Filter>
+    </ClInclude>
+    <ClInclude Include="Finish.h">
+      <Filter>Заголовочные файлы\Levels\Checkpoints</Filter>
+    </ClInclude>
+    <ClInclude Include="NextLevel.h">
+      <Filter>Заголовочные файлы\Levels\Checkpoints</Filter>
+    </ClInclude>
+    <ClInclude Include="Checkpoint.h">
+      <Filter>Заголовочные файлы\Levels\Checkpoints</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

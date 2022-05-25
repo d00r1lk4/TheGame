@@ -7,10 +7,13 @@
 class Entity;
 class Berries;
 class Traps;
+class Checkpoint;
 
 class Level {
 private:
 	static int currentLevel;
+
+	int countOfEnemies;
 
 	int HEIGTH = 0;
 	int WIDTH = 0;
@@ -38,6 +41,7 @@ public:
 	std::list<Entity*> getEntities();
 	std::list<Berries*> getBerries();
 	std::list<Traps*> getTraps();
+	Checkpoint *getFinish();
 
 	float getTime() {
 		return gameTime;
@@ -46,7 +50,7 @@ public:
 		gameTime -= time;
 	}
 
-	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels);
+	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*>& levels);
 
 
 	int getHeigth() {
@@ -63,7 +67,7 @@ public:
 	bool &checkReload() {
 		return isRealod;
 	}
-	void reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels, int score);
+	void reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*>& levels, int score);
 
 	static int getCurrentLevel() {
 		return currentLevel;
