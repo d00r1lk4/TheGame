@@ -34,12 +34,10 @@ std::vector<Level*> setLevels() {
 
 class GameLauncher {
 private:
-	sf::RenderWindow window;
+	sf::RenderWindow* window;
 
 	sf::Clock gameUpdateClock;
 	sf::Clock Timer;
-
-	sf::Image icon;
 
 	int pause = 0;
 	bool spamESC = false;
@@ -67,20 +65,13 @@ private:
 		return time;
 	}
 
-	void setWindowSettings() {
-		window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-		window.setFramerateLimit(60);
-
-		window.setMouseCursorVisible(false);
+	bool checkExit() {
+		return (pause % 2 == 1) && sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace);
 	}
+
 
 public:
-	GameLauncher() {
-		icon.loadFromFile("images/icon.png");
-		window.create(sf::VideoMode(Final::rezolution, Final::rezolution), L"TheGame", sf::Style::Default);
-		setWindowSettings();
-	}
+	GameLauncher(sf::RenderWindow *window) : window(window) { }
 
 	void LaunchGame() {
 		std::vector<Level*> levels = setLevels();
@@ -91,7 +82,7 @@ public:
 		Player* player;
 
 		//
-		while (window.isOpen()) {
+		while (!checkExit()) {
 			float time = checkPause();
 
 			player = dynamic_cast<Player*>(entities.front());
@@ -100,17 +91,15 @@ public:
 			Timer.restart();
 
 			sf::Event event;
-			while (window.pollEvent(event)) {
-				if (event.type == sf::Event::Closed)
-					window.close();
+			while (window->pollEvent(event)) {
+				if (event.type == sf::Event::Closed) {
+					break;
+				}
 				if (event.type == sf::Event::Resized) {
-					//window.setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2));
-					window.setSize(sf::Vector2u(600, 600));
+					//window->setPosition(sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2));
+					window->setSize(sf::Vector2u(600, 600));
 				}
 
-				if (event.type == sf::Event::GainedFocus) {
-					pause = 0;
-				}
 				if (event.type == sf::Event::LostFocus) {
 					pause = 1;
 				}
@@ -131,8 +120,32 @@ public:
 			GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()]);
 
 
-			GameEngine::GraphicsRender.Render(window, levels[Level::getCurrentLevel()], entities, berries, traps, time);
+			GameEngine::GraphicsRender.Render(*window, levels[Level::getCurrentLevel()], entities, berries, traps, time);
 		}
+
+		for (auto &elem : levels) {
+			delete elem;
+		}
+		levels.clear();
+
+		for (auto &elem : entities) {
+			delete elem;
+		}
+		entities.clear();
+
+		for (auto &elem : berries) {
+			delete elem;
+		}
+		berries.clear();
+
+		for (auto &elem : traps) {
+			delete elem;
+		}
+		traps.clear();
+
+		Level::reset();
+		
+		return;
 	}
 
 };

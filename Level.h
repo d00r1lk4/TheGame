@@ -32,7 +32,6 @@ private:
 
 public:
 	bool isReloading = false;
-	static bool isExit;
 
 	Level(const sf::String* TileMap, int h, int w, float time);
 
@@ -70,7 +69,6 @@ public:
 		return currentLevel;
 	}
 	static void reset() {
-		isExit = true;
 		currentLevel = 0;
 	}
 
