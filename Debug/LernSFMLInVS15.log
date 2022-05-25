@@ -1,2 +1,8 @@
-﻿  main.cpp
+﻿  Constants.h
+  Level.cpp
+  Player.cpp
+  Spike.cpp
+  main.cpp
+  Создание кода...
+  LINK : не найден или не выполнена сборка D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe при последней инкрементной компоновке; выполняется полная компоновка
   LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe
