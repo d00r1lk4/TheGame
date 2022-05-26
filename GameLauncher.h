@@ -120,6 +120,7 @@ public:
 
 			GameEngine::Physics.Collision(entities, berries, traps, finish);
 
+			levels[Level::getCurrentLevel()]->Update(entities, finish);
 			levels[Level::getCurrentLevel()]->Next(entities, berries, traps, finish, levels);
 
 			GameEngine::Physics.Update(time, entities, berries, traps, finish, levels[Level::getCurrentLevel()]);

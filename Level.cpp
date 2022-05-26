@@ -123,7 +123,21 @@ Checkpoint *Level::getFinish() {
 	return finish;
 }
 
-void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*> &levels) {
+
+void Level::Update(std::list<Entity*>& entities, Checkpoint*& const finish) {
+	if ((finish->toString() == "NextLevel")) {
+		std::list<Entity*>::iterator entitiesIterator;
+		for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
+			if ((*entitiesIterator)->checkAlive()) {
+				return;
+			}
+		}
+		NextLevel* next = dynamic_cast<NextLevel*>(finish);
+		next->setState(2);
+	}
+}
+
+void Level::Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*>& levels) {
 	Player* player = dynamic_cast<Player*>(entities.front());
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();

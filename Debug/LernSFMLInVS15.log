@@ -15,6 +15,7 @@ D:\Desktop\revive pls\TheGamev0.6\Level.cpp(169,131): warning C4227: устар�
   main.cpp
 D:\Desktop\revive pls\TheGamev0.6\Level.h(53,123): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 D:\Desktop\revive pls\TheGamev0.6\Level.h(70,125): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(190,71): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(234,28): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 D:\Desktop\revive pls\TheGamev0.6\PhysicsEngine.h(19,128): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 D:\Desktop\revive pls\TheGamev0.6\PhysicsEngine.h(82,28): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
@@ -24,4 +25,4 @@ D:\Desktop\revive pls\TheGamev0.6\Level.h(70,125): warning C4227: устарев
   Spike.cpp
   Strawberry.cpp
   Создание кода...
-  LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe
+D:\Desktop\revive pls\TheGamev0.6\Strawberry.cpp : fatal error C1090: Произошел сбой при вызове API PDB, код ошибки "3": D:\Desktop\revive pls\TheGamev0.6\Debug\vc143.pdb

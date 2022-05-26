@@ -1,4 +1,3 @@
 D:\desktop\LernSFMLInVS15\Debug\LernSFMLInVS15.exe
 C:\Users\wehehe\Desktop\LernSFMLInVS15\Debug\LernSFMLInVS15.exe
 E:\SFML\TheGame\TheGamev0.6\Debug\LernSFMLInVS15.exe
-D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe

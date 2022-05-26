@@ -187,7 +187,7 @@ private:
 			window.draw((*trapsIterator)->getSprite());
 		}
 	}
-	//void RenderFinish(sf::RenderWindow& window, Checkpoint*& const finish) { window.draw(finish->getSprite()); }
+	void RenderFinish(sf::RenderWindow& window, Checkpoint*& const finish) { window.draw(finish->getSprite()); }
 
 	///////
 	void RanderParticles(sf::RenderWindow &window, Entity* entity) {
@@ -241,7 +241,7 @@ public:
 		RenderEntities(window, entities);
 		RenderBerries(window, berries);
 		RenderTraps(window, traps);
-		//RenderFinish(window, finish);
+		RenderFinish(window, finish);
 
 		RenderMap(window, lvl);
 		//RanderParticles(window, entities.front());

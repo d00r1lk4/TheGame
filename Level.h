@@ -13,8 +13,6 @@ class Level {
 private:
 	static int currentLevel;
 
-	int countOfEnemies;
-
 	int HEIGTH = 0;
 	int WIDTH = 0;
 
@@ -49,6 +47,9 @@ public:
 	void updateTime(float time) {
 		gameTime -= time;
 	}
+
+
+	void Update(std::list<Entity*>& entities, Checkpoint*& const finish);
 
 	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Checkpoint*& const finish, std::vector<Level*>& levels);
 
