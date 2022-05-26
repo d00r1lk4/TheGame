@@ -18,6 +18,8 @@ private:
 	sf::String *TileMap = nullptr;
 	sf::String *ConstTileMap = nullptr;
 
+	sf::String* ConstFinishTileMap = nullptr;
+
 	const float ConstGameTime;
 	float gameTime = 0;
 
@@ -33,7 +35,7 @@ private:
 public:
 	bool isReloading = false;
 
-	Level(const sf::String* TileMap, int h, int w, float time);
+	Level(const sf::String* TileMap, const sf::String* FinishTileMap, int h, int w, float time);
 
 	std::list<Entity*> getEntities();
 	std::list<Berries*> getBerries();
@@ -48,6 +50,7 @@ public:
 
 	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels);
 
+	void Update(std::list<Entity*>& entities);
 
 	int getHeigth() {
 		return HEIGTH;

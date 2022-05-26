@@ -23,8 +23,8 @@
 std::vector<Level*> setLevels() {
 	std::vector<Level*> levels {};
 
-	levels.push_back(new Level(TESTTileMap, HEIGTH_TESTMAP, WIDTH_TESTMAP, 200));
-	levels.push_back(new Level(TESTTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
+	levels.push_back(new Level(TESTTileMap, TESTFinishTileMap, HEIGTH_TESTMAP, WIDTH_TESTMAP, 200));
+	levels.push_back(new Level(TESTTileMap2, TESTFinishTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
 
 
 
@@ -115,6 +115,7 @@ public:
 			
 
 			levels[Level::getCurrentLevel()]->Next(entities, berries, traps, levels);
+			levels[Level::getCurrentLevel()]->Update(entities);
 
 			GameEngine::Physics.Collision(entities, berries, traps);
 			GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()]);

@@ -27,15 +27,18 @@ void Level::copyLevel(sf::String* to, const sf::String* from) {
 		}
 	}
 }
-Level::Level(const sf::String* TileMap, int h, int w, float time) : ConstGameTime(time) {
+Level::Level(const sf::String* TileMap, const sf::String* FinishTileMap, int h, int w, float time) : ConstGameTime(time) {
 	HEIGTH = h;
 	WIDTH = w;
 
 	this->ConstTileMap = new sf::String[h];
 	this->TileMap = new sf::String[h];
 
+	this->ConstFinishTileMap = new sf::String[h];
+
 	copyLevel(this->ConstTileMap, TileMap);
 	copyLevel(this->TileMap, TileMap);
+	copyLevel(this->ConstFinishTileMap, FinishTileMap);
 
 	gameTime = time;
 }
@@ -121,6 +124,19 @@ void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std
 		player->setLevel(Level::getCurrentLevel());
 	}
 }
+
+void Level::Update(std::list<Entity*>& entities) {
+	std::list<Entity*>::iterator entitiesIterator;
+	for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
+		if ((*entitiesIterator)->checkAlive()) {
+			return;
+		}
+	}
+
+	copyLevel(TileMap, ConstFinishTileMap);
+
+}
+
 
 void Level::clearEntities(std::list<Entity*>& entities) {
 	for (auto elem : entities) {

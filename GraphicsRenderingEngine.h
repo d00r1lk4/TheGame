@@ -34,6 +34,8 @@ private:
 	sf::Sprite pauseSprite;
 	sf::Text pauseText;
 
+	float currentFrame = 0;
+
 	void setTextSettings(sf::String fontPath) {
 		font.loadFromFile(fontPath);
 
@@ -78,43 +80,50 @@ private:
 		backgroundSprite.setTexture(backgroundTexture);
 	}
 
-
-	void RenderMap(sf::RenderWindow& window, Level *lvl) {
-		//map		//FIXME
+	void RenderBackGround(sf::RenderWindow& window, Level* lvl) {
 		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
 			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
-				if (lvl->getTileMap()[i][j] == ' ') {
-					if (lvl->checkReload()) {
-						backgroundTexture.loadFromFile("images/Background/" + setRandomBackground());
-						lvl->checkReload() = false;
-					}
-					backgroundSprite.setTextureRect(sf::IntRect(Final::tilesRezolution * (backGroundCountj % 4),
-						Final::tilesRezolution * (backGroundCounti % 4),
-						Final::tilesRezolution,
-						Final::tilesRezolution));
-
-					backgroundSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
-					window.draw(backgroundSprite);
+				if (lvl->checkReload()) {
+					backgroundTexture.loadFromFile("images/Background/" + setRandomBackground());
+					lvl->checkReload() = false;
 				}
-				//if (TileMap[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(336, 0, 16, 16)); }
-				else {
-					if (lvl->getTileMap()[i][j] == '0') { mapSprite.setTextureRect(sf::IntRect(96, 32, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '1') { mapSprite.setTextureRect(sf::IntRect(112, 32, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '2') { mapSprite.setTextureRect(sf::IntRect(128, 32, 16, 16)); }
-									  
-					if (lvl->getTileMap()[i][j] == '3') { mapSprite.setTextureRect(sf::IntRect(96, 16, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '4') { mapSprite.setTextureRect(sf::IntRect(112, 16, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '5') { mapSprite.setTextureRect(sf::IntRect(128, 16, 16, 16)); }
-									  
-					if (lvl->getTileMap()[i][j] == '6') { mapSprite.setTextureRect(sf::IntRect(96, 0, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '7') { mapSprite.setTextureRect(sf::IntRect(112, 0, 16, 16)); }
-					if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
+				backgroundSprite.setTextureRect(sf::IntRect(Final::tilesRezolution * (backGroundCountj % 4),
+					Final::tilesRezolution * (backGroundCounti % 4),
+					Final::tilesRezolution,
+					Final::tilesRezolution));
 
-					//if (TileMap[i][j] == 'c') { mapSprite.setTextureRect(sf::IntRect(0, 0, 16, 16)); }
+				backgroundSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
+				window.draw(backgroundSprite);
+			}
+		}
+	}
+	void RenderMap(sf::RenderWindow& window, Level *lvl, float time) {
+		currentFrame += Final::animationSpeed * time;
+		if (currentFrame > 10) { currentFrame = 0; }
 
-					mapSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
-					window.draw(mapSprite);
+		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
+			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
+				if (lvl->getTileMap()[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(320, 0, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '0') { mapSprite.setTextureRect(sf::IntRect(96, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '1') { mapSprite.setTextureRect(sf::IntRect(112, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '2') { mapSprite.setTextureRect(sf::IntRect(128, 32, 16, 16)); }
+								  
+				if (lvl->getTileMap()[i][j] == '3') { mapSprite.setTextureRect(sf::IntRect(96, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '4') { mapSprite.setTextureRect(sf::IntRect(112, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '5') { mapSprite.setTextureRect(sf::IntRect(128, 16, 16, 16)); }
+								  
+				if (lvl->getTileMap()[i][j] == '6') { mapSprite.setTextureRect(sf::IntRect(96, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '7') { mapSprite.setTextureRect(sf::IntRect(112, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
+
+
+				if (lvl->getTileMap()[i][j] == 'F') {
+					mapSprite.setTextureRect(sf::IntRect(18 * static_cast<int>(currentFrame), 112, 16, 16));
 				}
+
+				mapSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);
+				window.draw(mapSprite);
 			}
 		}
 		//
@@ -221,7 +230,8 @@ public:
 	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, float time) {
 		window.clear(sf::Color(33, 31, 48));
 
-		RenderMap(window, lvl);
+		RenderBackGround(window, lvl);
+		RenderMap(window, lvl, time);
 
 		RenderEntities(window, entities);
 		RenderBerries(window, berries);
