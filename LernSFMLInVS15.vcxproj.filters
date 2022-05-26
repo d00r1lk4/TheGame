@@ -55,6 +55,9 @@
     <Filter Include="Файлы ресурсов\Objects\Traps">
       <UniqueIdentifier>{1f98554b-fde5-4446-84c3-12b39912e8df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Levels\Maps\TEST%28dont use!%29">
+      <UniqueIdentifier>{94e18e48-a948-4b89-9f76-6cdaa8a04e2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="Spike.cpp">
       <Filter>Файлы ресурсов\Objects\Traps</Filter>
+    </ClCompile>
+    <ClCompile Include="Mushroom.cpp">
+      <Filter>Файлы ресурсов\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,12 +143,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Заголовочные файлы\Objects\Player</Filter>
     </ClInclude>
-    <ClInclude Include="testMap.h">
-      <Filter>Заголовочные файлы\Levels\Maps</Filter>
-    </ClInclude>
-    <ClInclude Include="testMap2.h">
-      <Filter>Заголовочные файлы\Levels\Maps</Filter>
-    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Заголовочные файлы\Levels</Filter>
     </ClInclude>
@@ -166,6 +166,21 @@
     </ClInclude>
     <ClInclude Include="Spike.h">
       <Filter>Заголовочные файлы\Objects\Traps</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap3.h">
+      <Filter>Заголовочные файлы\Levels\Maps\TEST%28dont use!%29</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap.h">
+      <Filter>Заголовочные файлы\Levels\Maps\TEST%28dont use!%29</Filter>
+    </ClInclude>
+    <ClInclude Include="testMap2.h">
+      <Filter>Заголовочные файлы\Levels\Maps\TEST%28dont use!%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Mushroom.h">
+      <Filter>Заголовочные файлы\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="MushroomAnimation.h">
+      <Filter>Заголовочные файлы\Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

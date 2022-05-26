@@ -19,12 +19,14 @@
 
 #include "testMap.h"
 #include "testMap2.h"
+#include "testMap3.h"
 
 std::vector<Level*> setLevels() {
 	std::vector<Level*> levels {};
 
 	levels.push_back(new Level(TESTTileMap, TESTFinishTileMap, HEIGTH_TESTMAP, WIDTH_TESTMAP, 200));
 	levels.push_back(new Level(TESTTileMap2, TESTFinishTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
+	levels.push_back(new Level(TESTTileMap3, TESTFinishTileMap3, HEIGTH_TESTMAP3, WIDTH_TESTMAP3, 100));
 
 
 

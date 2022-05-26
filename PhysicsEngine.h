@@ -30,6 +30,9 @@ public:
 					if ((*entitiesIterator)->toString() == "BlueBird") {
 						player->setScore(player->getScore() + 100);
 					}
+					if ((*entitiesIterator)->toString() == "Mushroom") {
+						player->setScore(player->getScore() + 50);
+					}
 				}
 				else if (player->getDy() < -0.2f || player->checkGround()) {
 					player->dead();

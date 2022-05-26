@@ -6,7 +6,9 @@
 class Entity;
 
 #include "Player.h"
+
 #include "AngryPig.h"
+#include "Mushroom.h"
 #include "BlueBird.h"
 
 #include "Cherries.h"
@@ -54,9 +56,14 @@ std::list<Entity*> Level::getEntities() {
 				*xPos = j * Final::tilesRezolution;
 				*yPos = i * Final::tilesRezolution;
 			}
+
 			if (TileMap[i][j] == 'p') {
 				TileMap[i][j] = ' ';
 				entities.push_back(new AngryPig(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+			}
+			if (TileMap[i][j] == 'm') {
+				TileMap[i][j] = ' ';
+				entities.push_back(new Mushroom(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
 			}
 			if (TileMap[i][j] == 'b') {
 				TileMap[i][j] = ' ';

@@ -197,6 +197,7 @@
     <ClCompile Include="Constants.h" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spike.cpp" />
     <ClCompile Include="Strawberry.cpp" />
@@ -219,6 +220,8 @@
     <ClInclude Include="GameLauncher.h" />
     <ClInclude Include="GraphicsRenderingEngine.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Mushroom.h" />
+    <ClInclude Include="MushroomAnimation.h" />
     <ClInclude Include="PlayerAnimation.h" />
     <ClInclude Include="Spike.h" />
     <ClInclude Include="Strawberry.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="testMap2.h" />
+    <ClInclude Include="testMap3.h" />
     <ClInclude Include="Traps.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
