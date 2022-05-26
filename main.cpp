@@ -1,6 +1,73 @@
 #include <SFML/Graphics.hpp>
+#include <sstream>
 
 #include "GameLauncher.h"
+
+void events(sf::RenderWindow& window) {
+	sf::Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == sf::Event::Closed)
+			window.close();
+		if (event.type == sf::Event::Resized) {
+			//window->setPosition(sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2));
+			window.setSize(sf::Vector2u(600, 600));
+		}
+
+	}
+}
+
+void drawCongratulationsWindow(sf::RenderWindow& window, int score) {
+	sf::Font font;
+	font.loadFromFile("fonts/pixel.ttf");
+
+	sf::Text congratsText;
+	sf::Text scoreText;
+	sf::Text thanksText;
+	sf::Text pressEnterText;
+
+	congratsText.setString("Congratulations!\tYou did it!");
+	congratsText.setFont(font);
+	congratsText.setCharacterSize(24);
+	congratsText.setColor(sf::Color::White);
+	congratsText.setOrigin(congratsText.getLocalBounds().width / 2, congratsText.getLocalBounds().height / 2);
+	congratsText.setPosition(window.getSize().x / 2.f, 30);
+
+	std::ostringstream playerScoreString;	playerScoreString << score;
+	scoreText.setString("your score: " + playerScoreString.str());
+	scoreText.setFont(font);
+	scoreText.setCharacterSize(24);
+	scoreText.setColor(sf::Color::White);
+	scoreText.setOrigin(scoreText.getLocalBounds().width / 2, scoreText.getLocalBounds().height / 2);
+	scoreText.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f);
+
+	thanksText.setString("Thanks for playing!");
+	thanksText.setFont(font);
+	thanksText.setCharacterSize(24);
+	thanksText.setColor(sf::Color::White);
+	thanksText.setOrigin(thanksText.getLocalBounds().width / 2, thanksText.getLocalBounds().height / 2);
+	thanksText.setPosition(window.getSize().x / 2.f, window.getSize().y - 80);
+
+	pressEnterText.setString("press Enter to continue...");
+	pressEnterText.setFont(font);
+	pressEnterText.setCharacterSize(16);
+	pressEnterText.setColor(sf::Color::White);
+	pressEnterText.setOrigin(pressEnterText.getLocalBounds().width / 2, pressEnterText.getLocalBounds().height / 2);
+	pressEnterText.setPosition(window.getSize().x / 2.f, window.getSize().y - 40);
+
+	while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+		events(window);
+
+		window.clear(sf::Color(33, 31, 48));
+
+		window.draw(congratsText);
+		window.draw(scoreText);
+		window.draw(thanksText);
+		window.draw(pressEnterText);
+
+		window.display();
+	}
+
+}
 
 int main() {
 	sf::RenderWindow window;
@@ -49,6 +116,7 @@ int main() {
 	controlsText.setPosition(0, 0);
 
 	//
+	int playerScore = 0;
 
 	int menuSelector = 0;
 	while (window.isOpen()) {
@@ -78,11 +146,21 @@ int main() {
 			switch (menuSelector)
 			{
 			case 0: {
-				GameLauncher *gameLauncher = new GameLauncher(&window);
-				gameLauncher->LaunchGame();
+				GameLauncher* gameLauncher = new GameLauncher(&window);
+
+				bool isFinish = gameLauncher->LaunchGame(playerScore);
+
 				delete gameLauncher;
 
+
 				window.setView(sf::View(sf::Vector2f(300, 300), sf::Vector2f(600, 600)));
+
+				if (isFinish) {
+					drawCongratulationsWindow(window, playerScore);
+				}
+
+
+				menuSelector = -1;
 
 				break;
 			}

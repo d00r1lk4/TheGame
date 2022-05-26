@@ -7,7 +7,7 @@ BlueBird::BlueBird(float x, float y) : Enemy("BlueBird/BlueBird.png", x, y, 32, 
 	dx = -0.075f;
 }
 
-void BlueBird::checkBoundsOfMap(float Dx, float Dy, Level* lvl) {
+bool BlueBird::checkBoundsOfMap(float Dx, float Dy, Level* lvl) {
 	for (int i = yPos / Final::tilesRezolution; i < (yPos + sprite.getGlobalBounds().height) / Final::tilesRezolution; ++i)
 		for (int j = xPos / Final::tilesRezolution; j < (xPos + sprite.getGlobalBounds().width) / Final::tilesRezolution; ++j) {
 			if (lvl->getTileMap()[i][j] == '0' || lvl->getTileMap()[i][j] == '1' || lvl->getTileMap()[i][j] == '2' || lvl->getTileMap()[i][j] == '3' ||
@@ -20,9 +20,11 @@ void BlueBird::checkBoundsOfMap(float Dx, float Dy, Level* lvl) {
 				if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); dx = 0.05f; sprite.scale(-1, 1); }
 			}
 		}
+
+	return 0;
 }
 
-void BlueBird::update(float time, Level* lvl) {
+bool BlueBird::update(float time, Level* lvl) {
 	switch (state) {
 	case fly: Animator.Play("fly", time); break;
 	case hit: Animator.Play("hit", time); break;
@@ -38,4 +40,6 @@ void BlueBird::update(float time, Level* lvl) {
 		if (health > 0) { state = fly; }
 		if (health <= 0) { dead(); state = death; }
 	}
+
+	return 0;
 }

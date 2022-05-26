@@ -43,7 +43,7 @@ const sf::String TESTFinishTileMap2[HEIGTH_TESTMAP2] = {
 	"5                                           3",
 	"5                                           3",
 	"5                                           3",
-	"5                                           3",
+	"5                      W                    3",
 	"5                                           3",
 	"5                  67777778                 3",
 	"5          6777777834444445            677783",

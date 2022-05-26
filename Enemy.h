@@ -14,14 +14,14 @@ private:
 
 
 protected:
-	virtual void checkBoundsOfMap(float Dx, float Dy) {};
+	virtual bool checkBoundsOfMap(float Dx, float Dy) { return 0; };
 
 
 	Enemy(sf::String file, float x, float y, float width, float height) : Entity(setImage(file), x, y, width, height) {}
 
 
 public:
-	virtual void update(float time) {};
+	virtual bool update(float time) { return 0; };
 	
 	virtual sf::String toString() {
 		return "Enemy";

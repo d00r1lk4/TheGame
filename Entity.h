@@ -23,12 +23,12 @@ protected:
 		isAlive = true; onGround = false;
 	}
 
-	virtual void checkBoundsOfMap(float Dx, float Dy, Level *lvl) {};
+	virtual bool checkBoundsOfMap(float Dx, float Dy, Level* lvl) { return 0; };
 
 
 public:
 
-	virtual void update(float time, Level *lvl) {};
+	virtual bool update(float time, Level* lvl) { return 0; };
 
 
 	void setSpeed(float speed) {

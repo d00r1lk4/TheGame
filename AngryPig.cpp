@@ -10,7 +10,7 @@ AngryPig::AngryPig(float x, float y) : Enemy("AngryPig/AngryPig.png", x, y, 36, 
 	dx = speed;
 }
 
-void AngryPig::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
+bool AngryPig::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 	for (int i = yPos / Final::tilesRezolution; i < (yPos + sprite.getGlobalBounds().height) / Final::tilesRezolution; ++i)
 	for (int j = xPos / Final::tilesRezolution; j < (xPos + sprite.getGlobalBounds().width) / Final::tilesRezolution; ++j) {
 		if (lvl->getTileMap()[i][j] == '0' || lvl->getTileMap()[i][j] == '1' || lvl->getTileMap()[i][j] == '2' || lvl->getTileMap()[i][j] == '3' ||
@@ -23,9 +23,11 @@ void AngryPig::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 			if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); facingRight = false; }
 		}
 	}
+
+	return 0;
 }
 
-void AngryPig::update(float time, Level *lvl) {
+bool AngryPig::update(float time, Level *lvl) {
 	switch (state) {
 	case walk: Animator.Play("walk", time); break;
 	case stay: Animator.Play("stay", time); break;
@@ -62,4 +64,5 @@ void AngryPig::update(float time, Level *lvl) {
 		else if (health <= 0) { dead(); state = death; }
 	}
 
+	return 0;
 }

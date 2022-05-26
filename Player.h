@@ -23,12 +23,12 @@ private:
 	sf::Image setRandomSprite();
 
 	void controller(float time);
-	void checkBoundsOfMap(float Dx, float Dy, Level *lvl);
+	bool checkBoundsOfMap(float Dx, float Dy, Level *lvl);
 
 public:
 	Player(float x, float y);
 
-	void update(float time, Level *lvl);
+	bool update(float time, Level *lvl);
 
 	int getScore();
 	void setScore(int score) {

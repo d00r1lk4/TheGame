@@ -33,7 +33,7 @@ protected:
 	State state = stay;
 
 public:
-	virtual void update(float time) {
+	virtual bool update(float time) {
 		switch (state)
 		{
 		case stay:
@@ -50,6 +50,8 @@ public:
 		else {
 			state = stay;
 		}
+
+		return 0;
 	}
 
 	bool checkCollected() {

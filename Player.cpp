@@ -29,7 +29,7 @@ Player::Player(float x, float y) : Entity(setRandomSprite(), x, y, Final::player
 }
 
 
-void Player::update(float time, Level *lvl) {
+bool Player::update(float time, Level *lvl) {
 	controller(time);
 
 	switch (state) {
@@ -42,16 +42,20 @@ void Player::update(float time, Level *lvl) {
 		case death: Animator.Play("death", time); break;
 	}
 
+	bool finish = 0;
+
 	xPos += dx * time;
-	checkBoundsOfMap(dx, 0, lvl);
+	finish = checkBoundsOfMap(dx, 0, lvl);
 
 	dy += Final::gravitation * time;
 	yPos += dy * time;
-	checkBoundsOfMap(0, dy, lvl);
+	finish = checkBoundsOfMap(0, dy, lvl);
 
 	sprite.setPosition(xPos + sprite.getGlobalBounds().width / 2, yPos + sprite.getGlobalBounds().height / 2);
 
 	if (health <= 0) { isAlive = false; }
+
+	return finish;
 }
 
 
@@ -104,7 +108,7 @@ void Player::controller(float time) {
 		dx = 0; dy = 0;
 	}
 }
-void Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
+bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 	for (int i = yPos / Final::tilesRezolution; i < (yPos + Final::playerRezolution) / Final::tilesRezolution; ++i) 
 	for (int j = xPos / Final::tilesRezolution; j < (xPos + Final::playerRezolution) / Final::tilesRezolution; ++j) {
 		if (lvl->getTileMap()[i][j] == '0' || lvl->getTileMap()[i][j] == '1' || lvl->getTileMap()[i][j] == '2' || lvl->getTileMap()[i][j] == '3' ||
@@ -133,7 +137,17 @@ void Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 
 			++currentLevel;
 		}
+		if (lvl->getTileMap()[i][j] == 'W') {
+			//animation
+
+			return true;
+			lvl->getTileMap()[i][j] = ' ';
+
+		}
+
 	}
+
+	return 0;
 }
 
 int Player::getScore() {

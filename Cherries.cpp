@@ -7,6 +7,7 @@ Cherries::Cherries(float x, float y) : Berries("Cherries.png", x, y, 32, 32) {
 	sprite.setPosition(xPos + sprite.getLocalBounds().width / 2, yPos + sprite.getLocalBounds().height / 2);
 }
 
-void Cherries::update(float time) {
+bool Cherries::update(float time) {
 	Berries::update(time);
+	return 0;
 }

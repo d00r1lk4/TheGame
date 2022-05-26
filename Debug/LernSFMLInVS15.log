@@ -1,8 +1,12 @@
-﻿  Constants.h
+﻿  AngryPig.cpp
+  Apple.cpp
+  BlueBird.cpp
+  Cherries.cpp
+  Constants.h
   Level.cpp
+  main.cpp
   Player.cpp
   Spike.cpp
-  main.cpp
+  Strawberry.cpp
   Создание кода...
-  LINK : не найден или не выполнена сборка D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe при последней инкрементной компоновке; выполняется полная компоновка
-  LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGamev0.6\Debug\LernSFMLInVS15.exe
+D:\Desktop\revive pls\TheGame\Strawberry.cpp : fatal error C1090: Произошел сбой при вызове API PDB, код ошибки "3": D:\Desktop\revive pls\TheGame\Debug\vc143.pdb

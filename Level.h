@@ -44,8 +44,10 @@ public:
 	float getTime() {
 		return gameTime;
 	}
-	void updateTime(float time) {
+	bool updateTime(float time) {
 		gameTime -= time;
+
+		return 0;
 	}
 
 	void Next(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels);
@@ -71,6 +73,7 @@ public:
 	static int getCurrentLevel() {
 		return currentLevel;
 	}
+
 	static void reset() {
 		currentLevel = 0;
 	}

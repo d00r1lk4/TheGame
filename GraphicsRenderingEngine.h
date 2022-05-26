@@ -118,8 +118,8 @@ private:
 				if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
 
 
-				if (lvl->getTileMap()[i][j] == 'F') {
-					mapSprite.setTextureRect(sf::IntRect(18 * static_cast<int>(currentFrame), 112, 16, 16));
+				if (lvl->getTileMap()[i][j] == 'F' || lvl->getTileMap()[i][j] == 'W') {
+					mapSprite.setTextureRect(sf::IntRect(0/* 18 * static_cast<int>(currentFrame) */, 112, 16, 16));
 				}
 
 				mapSprite.setPosition(j * Final::tilesRezolution, i * Final::tilesRezolution);

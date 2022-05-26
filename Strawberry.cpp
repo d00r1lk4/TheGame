@@ -7,6 +7,7 @@ Strawberry::Strawberry(float x, float y) : Berries("Strawberry.png", x, y, 32, 3
 	sprite.setPosition(xPos + sprite.getLocalBounds().width / 2, yPos + sprite.getLocalBounds().height / 2);
 }
 
-void Strawberry::update(float time) {
+bool Strawberry::update(float time) {
 	Berries::update(time);
+	return 0;
 }

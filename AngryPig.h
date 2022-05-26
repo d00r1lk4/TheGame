@@ -8,7 +8,7 @@
 
 class AngryPig : public Enemy {
 private:
-	void checkBoundsOfMap(float Dx, float Dy, Level *lvl);
+	bool checkBoundsOfMap(float Dx, float Dy, Level *lvl);
 
 	enum State { walk, stay, angry, hit, death };
 	State state = walk;
@@ -18,7 +18,7 @@ private:
 public:
 	AngryPig(float x, float y);
 
-	void update(float time, Level *lvl);
+	bool update(float time, Level *lvl);
 
 	virtual sf::String toString() {
 		return "AngryPig";

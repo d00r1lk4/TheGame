@@ -28,7 +28,6 @@ std::vector<Level*> setLevels() {
 
 
 
-
 	return levels;
 }
 
@@ -73,13 +72,13 @@ private:
 public:
 	GameLauncher(sf::RenderWindow *window) : window(window) { }
 
-	void LaunchGame() {
+	bool LaunchGame(int &playerScore) {
 		std::vector<Level*> levels = setLevels();
 		std::list<Entity*> entities = levels[Level::getCurrentLevel()]->getEntities();
 		std::list<Berries*> berries = levels[Level::getCurrentLevel()]->getBerries();
 		std::list<Traps*> traps = levels[Level::getCurrentLevel()]->getTraps();
 
-		Player* player;
+		Player* player = dynamic_cast<Player*>(entities.front());
 
 		//
 		while (!checkExit()) {
@@ -93,7 +92,7 @@ public:
 			sf::Event event;
 			while (window->pollEvent(event)) {
 				if (event.type == sf::Event::Closed) {
-					break;
+					return false;
 				}
 				if (event.type == sf::Event::Resized) {
 					//window->setPosition(sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2));
@@ -118,11 +117,14 @@ public:
 			levels[Level::getCurrentLevel()]->Update(entities);
 
 			GameEngine::Physics.Collision(entities, berries, traps);
-			GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()]);
-
+			if (GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()])) {
+				break;
+			}
 
 			GameEngine::GraphicsRender.Render(*window, levels[Level::getCurrentLevel()], entities, berries, traps, time);
 		}
+
+		playerScore = player->getScore();
 
 		for (auto &elem : levels) {
 			delete elem;
@@ -146,7 +148,7 @@ public:
 
 		Level::reset();
 		
-		return;
+		return true;
 	}
 
 };

@@ -22,8 +22,10 @@ protected:
 
 
 public:
-	virtual void update(float time) {
+	virtual bool update(float time) {
 		sprite.setPosition(xPos, yPos);
+
+		return 0;
 	}
 
 

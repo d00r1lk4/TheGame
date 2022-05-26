@@ -126,6 +126,8 @@ void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std
 }
 
 void Level::Update(std::list<Entity*>& entities) {
+	static bool isAlreadyUpdated = true;
+
 	std::list<Entity*>::iterator entitiesIterator;
 	for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
 		if ((*entitiesIterator)->checkAlive()) {
@@ -133,7 +135,10 @@ void Level::Update(std::list<Entity*>& entities) {
 		}
 	}
 
-	copyLevel(TileMap, ConstFinishTileMap);
+	if (isAlreadyUpdated) {
+		copyLevel(TileMap, ConstFinishTileMap);
+		isAlreadyUpdated = true;
+	}
 
 }
 

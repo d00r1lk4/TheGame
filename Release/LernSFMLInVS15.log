@@ -1,90 +1,13 @@
-﻿  AngryPig.cpp
-D:\Desktop\revive pls\TheGamev0.6\AngryPig.cpp(14,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\AngryPig.cpp(15,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-  Apple.cpp
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,100): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  BlueBird.cpp
-D:\Desktop\revive pls\TheGamev0.6\BlueBird.cpp(11,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\BlueBird.cpp(12,14): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-  Cherries.cpp
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,100): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  Constants.h
-  Level.cpp
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,100): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,98): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,91): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(59,92): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(59,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(63,92): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(63,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(68,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(68,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(80,91): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(80,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(84,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(84,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(88,88): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(88,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(101,86): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Level.cpp(101,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  main.cpp
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,100): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,98): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,91): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(95,64): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(95,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(125,57): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\GraphicsRenderingEngine.h(125,29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\GameLauncher.h(47,14): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(30,69): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(30,45): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(37,66): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(37,42): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(43,70): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Desktop\revive pls\TheGamev0.6\main.cpp(43,45): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-  Player.cpp
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(108,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(109,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(113,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(114,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(116,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Player.cpp(117,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  Spike.cpp
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,98): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Traps.h(15,91): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  Strawberry.cpp
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,100): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Desktop\revive pls\TheGamev0.6\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+﻿  Player.cpp
+D:\Desktop\revive pls\TheGame\Player.cpp(112,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\Desktop\revive pls\TheGame\Player.cpp(113,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\Desktop\revive pls\TheGame\Player.cpp(117,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Desktop\revive pls\TheGame\Player.cpp(118,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Desktop\revive pls\TheGame\Player.cpp(120,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Desktop\revive pls\TheGame\Player.cpp(121,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Создание кода
-  Previous IPDB not found, fall back to full compilation.
-  All 659 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 661 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGamev0.6\Release\LernSFMLInVS15.exe
+  LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGame\Release\LernSFMLInVS15.exe

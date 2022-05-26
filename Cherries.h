@@ -8,7 +8,7 @@ private:
 public:
 	Cherries(float x, float y);
 
-	virtual void update(float time);
+	virtual bool update(float time);
 
 	//virtual sf::String toString() { return "Cherries"; }
 };
