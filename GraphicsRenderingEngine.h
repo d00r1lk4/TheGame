@@ -107,7 +107,7 @@ private:
 
 				if (lvl->getTileMap()[i][j] == '`') { mapSprite.setTextureRect(sf::IntRect(320, 0, 16, 16)); }
 
-				//bricks
+				//dark bricks
 				if (lvl->getTileMap()[i][j] == 'f') { mapSprite.setTextureRect(sf::IntRect(0, 32, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == '(') { mapSprite.setTextureRect(sf::IntRect(16, 32, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == ')') { mapSprite.setTextureRect(sf::IntRect(32, 32, 16, 16)); }
@@ -124,6 +124,16 @@ private:
 				if (lvl->getTileMap()[i][j] == '+') { mapSprite.setTextureRect(sf::IntRect(64, 0, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == ',') { mapSprite.setTextureRect(sf::IntRect(48, 16, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == '-') { mapSprite.setTextureRect(sf::IntRect(64, 16, 16, 16)); }
+				//
+
+				//red bricks
+				if (lvl->getTileMap()[i][j] == 'Y') { mapSprite.setTextureRect(sf::IntRect(272, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'Z') { mapSprite.setTextureRect(sf::IntRect(288, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '[') { mapSprite.setTextureRect(sf::IntRect(304, 32, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'd') { mapSprite.setTextureRect(sf::IntRect(272, 48, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ']') { mapSprite.setTextureRect(sf::IntRect(288, 48, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '_') { mapSprite.setTextureRect(sf::IntRect(304, 48, 16, 16)); }
 				//
 
 				//green grass
@@ -175,7 +185,7 @@ private:
 
 				if (lvl->getTileMap()[i][j] == 'H') { mapSprite.setTextureRect(sf::IntRect(0, 64, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == 'I') { mapSprite.setTextureRect(sf::IntRect(16, 64, 16, 16)); }
-				if (lvl->getTileMap()[i][j] == 'G') { mapSprite.setTextureRect(sf::IntRect(32, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'J') { mapSprite.setTextureRect(sf::IntRect(32, 64, 16, 16)); }
 
 				if (lvl->getTileMap()[i][j] == 'R') { mapSprite.setTextureRect(sf::IntRect(48, 64, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == 'S') { mapSprite.setTextureRect(sf::IntRect(64, 64, 16, 16)); }
@@ -331,11 +341,12 @@ public:
 		window.clear(sf::Color(33, 31, 48));
 
 		RenderBackGround(window, lvl);
-		RenderMap(window, lvl, time);
 
 		RenderEntities(window, entities);
 		RenderBerries(window, berries);
 		RenderTraps(window, traps);
+
+		RenderMap(window, lvl, time);
 		//RanderParticles(window, entities.front());
 
 		if (entities.front()->checkAlive()) {

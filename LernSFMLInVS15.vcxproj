@@ -235,6 +235,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="testMap2.h" />
     <ClInclude Include="testMap3.h" />
+    <ClInclude Include="ThirdLevel.h" />
     <ClInclude Include="Traps.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -105,7 +105,7 @@ std::list<Traps*> Level::getTraps() {
 		for (int j = 0; j < WIDTH; ++j) {
 			if (TileMap[i][j] == '^') {
 				TileMap[i][j] = ' ';
-				traps.push_back(new Spike(j * Final::tilesRezolution, i * Final::tilesRezolution + 2));
+				traps.push_back(new Spike(j * Final::tilesRezolution, i * Final::tilesRezolution));
 			}
 		}
 	}

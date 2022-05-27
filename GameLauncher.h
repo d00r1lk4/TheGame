@@ -22,6 +22,8 @@
 //#include "testMap3.h"
 
 #include "FirstLevel.h"
+#include "SecondLevel.h"
+#include "ThirdLevel.h"
 
 std::vector<Level*> setLevels() {
 	std::vector<Level*> levels {};
@@ -30,7 +32,9 @@ std::vector<Level*> setLevels() {
 	//levels.push_back(new Level(TESTTileMap2, TESTFinishTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
 	//levels.push_back(new Level(TESTTileMap3, TESTFinishTileMap3, HEIGTH_TESTMAP3, WIDTH_TESTMAP3, 100));
 	 
-	levels.push_back(new Level(FirstTileMap, FirstFinishTileMap, HEIGTH_FIRST, WIDTH_FIRST, 200));
+	levels.push_back(new Level(FirstTileMap, FirstFinishTileMap, Final::HEIGTH_LEVEL, Final::WIDTH_LEVEL, 60));
+	levels.push_back(new Level(SecondTileMap, SecondFinishTileMap, Final::HEIGTH_LEVEL, Final::WIDTH_LEVEL, 60));
+	levels.push_back(new Level(ThirdTileMap, ThirdFinishTileMap, Final::HEIGTH_LEVEL, Final::WIDTH_LEVEL, 60));
 
 
 
@@ -127,6 +131,7 @@ public:
 
 			GameEngine::Physics.Collision(entities, berries, traps);
 			if (GameEngine::Physics.Update(time, entities, berries, traps, levels[Level::getCurrentLevel()])) {
+				isExit = false;
 				break;
 			}
 

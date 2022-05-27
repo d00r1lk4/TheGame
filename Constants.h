@@ -18,4 +18,7 @@ namespace Final {
 	
 	static const float gravitation = 0.0005f;
 	static const float jumpForce = 0.25f;
+
+	static const int HEIGTH_LEVEL = 16;
+	static const int WIDTH_LEVEL = 30;
 }

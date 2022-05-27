@@ -191,5 +191,8 @@
     <ClInclude Include="SecondLevel.h">
       <Filter>Заголовочные файлы\Levels\Maps\NEW</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdLevel.h">
+      <Filter>Заголовочные файлы\Levels\Maps\NEW</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

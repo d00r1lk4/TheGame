@@ -166,7 +166,12 @@ bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 			lvl->getTileMap()[i][j] == 'y' || lvl->getTileMap()[i][j] == 'z' || lvl->getTileMap()[i][j] == '{' ||
 			lvl->getTileMap()[i][j] == '|' ||
 
-			lvl->getTileMap()[i][j] == '}' || lvl->getTileMap()[i][j] == '~' || lvl->getTileMap()[i][j] == 'X'
+			lvl->getTileMap()[i][j] == '}' || lvl->getTileMap()[i][j] == '~' || lvl->getTileMap()[i][j] == 'X' ||
+			//
+
+			//
+			lvl->getTileMap()[i][j] == 'Y' || lvl->getTileMap()[i][j] == 'Z' || lvl->getTileMap()[i][j] == '[' ||
+			lvl->getTileMap()[i][j] == 'd' || lvl->getTileMap()[i][j] == ']' || lvl->getTileMap()[i][j] == '_'
 			//
 			) {
 
