@@ -1,3 +1,4 @@
+#include <SFML/Audio.hpp>
 #include <iostream>
 
 #include "AngryPig.h"
@@ -8,6 +9,10 @@ AngryPig::AngryPig(float x, float y) : Enemy("AngryPig/AngryPig.png", x, y, 36, 
 	health = 2;
 	speed = 0.025f;
 	dx = speed;
+
+	soundBuffer.loadFromFile("sounds/pig.ogg");
+	sound.setBuffer(soundBuffer);
+	sound.setVolume(30);
 }
 
 bool AngryPig::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
@@ -74,8 +79,8 @@ bool AngryPig::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 			if (Dy > 0.f) { setPosY(i * Final::tilesRezolution - sprite.getGlobalBounds().height); dy = 0; }
 			if (Dy < 0.f) { setPosY((i - 1) * Final::tilesRezolution + sprite.getGlobalBounds().height); dy = 0; }
 
-			if (Dx > 0) { setPosX(j * Final::tilesRezolution - sprite.getGlobalBounds().width); facingRight = true; }
-			if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); facingRight = false; }
+			if (Dx > 0) { setPosX(j * Final::tilesRezolution - sprite.getGlobalBounds().width); facingRight = true; sound.play(); }
+			if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); facingRight = false; sound.play(); }
 		}
 	}
 
@@ -116,7 +121,17 @@ bool AngryPig::update(float time, Level *lvl) {
 			state = angry;
 			speed = 0.05f;
 		}
-		else if (health <= 0) { dead(); state = death; }
+		else if (health <= 0 && !isPlayed) {
+			dead();
+			state = death;
+
+			soundBuffer.loadFromFile("sounds/kill.ogg");
+			sound.setBuffer(soundBuffer);
+			sound.setVolume(100);
+			sound.play();
+
+			isPlayed = true;
+		}
 	}
 
 	return 0;

@@ -33,6 +33,7 @@ private:
 	sf::Texture pauseTexture;
 	sf::Sprite pauseSprite;
 	sf::Text pauseText;
+	sf::Text exitText;
 
 	float currentFrame = 0;
 
@@ -54,6 +55,12 @@ private:
 		pauseText.setCharacterSize(32);
 		pauseText.setColor(sf::Color::White);
 		pauseText.setOrigin(pauseText.getLocalBounds().width / 2, pauseText.getLocalBounds().height / 2);
+
+		exitText.setString("press Backspace to exit the main menu...");
+		exitText.setFont(font);
+		exitText.setCharacterSize(16);
+		exitText.setColor(sf::Color::White);
+		exitText.setOrigin(exitText.getLocalBounds().width / 2, exitText.getLocalBounds().height / 2);
 	}
 
 	sf::String setRandomBackground() {
@@ -360,8 +367,11 @@ public:
 		else {
 			pauseSprite.setPosition(playerCamera.getCenter().x, playerCamera.getCenter().y);
 			window.draw(pauseSprite);
+
 			pauseText.setPosition(playerCamera.getCenter().x, playerCamera.getCenter().y);
+			exitText.setPosition(playerCamera.getCenter().x, playerCamera.getCenter().y + 250);
 			window.draw(pauseText);
+			window.draw(exitText);
 		}
 
 		window.display();

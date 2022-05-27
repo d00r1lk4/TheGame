@@ -2,6 +2,8 @@
 
 #include "Object.h"
 
+#include <SFML/Audio.hpp>
+
 class Level;
 
 class Entity : public Object {

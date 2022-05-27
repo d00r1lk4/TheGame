@@ -44,12 +44,20 @@ public:
 			break;
 		}
 
-		if (isCollected) {
+		if (isCollected && !isPlayed) {
 			state = collected;
+
+			soundBuffer.loadFromFile("sounds/eat.ogg");
+			sound.setBuffer(soundBuffer);
+			sound.setVolume(100);
+			sound.play();
+
+			isPlayed = true;
 		}
-		else {
+		else if (!isCollected) {
 			state = stay;
 		}
+
 
 		return 0;
 	}

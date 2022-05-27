@@ -100,6 +100,6 @@ D:\Desktop\revive pls\TheGame\Berries.h(21,100): warning C4244: аргумент
 D:\Desktop\revive pls\TheGame\Berries.h(21,93): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Создание кода
   Previous IPDB not found, fall back to full compilation.
-  All 676 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 680 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Создание кода завершено
   LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGame\Release\LernSFMLInVS15.exe

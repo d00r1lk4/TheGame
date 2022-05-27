@@ -23,9 +23,15 @@ sf::Image Player::setRandomSprite() {
 Player::Player(float x, float y) : Entity(setRandomSprite(), x, y, Final::playerRezolution, Final::playerRezolution) {
 	speed = Final::playerSpeed;
 
-	health = 3;
+	health = 1;
 
 	sprite.setTextureRect(sf::IntRect(0, 0, Final::playerRezolution, Final::playerRezolution));
+
+	walkBuffer.loadFromFile("sounds/playerFootstep.ogg");
+	walkSound.setBuffer(walkBuffer);
+	walkSound.setVolume(100);
+	walkSound.setLoop(1);
+	walkSound.pause();
 }
 
 
@@ -33,13 +39,28 @@ bool Player::update(float time, Level *lvl) {
 	controller(time);
 
 	switch (state) {
-		case walk: Animator.Play("walk", time); break;
-		case jump: Animator.Play("jump", time); break;
-		case fall: Animator.Play("fall", time); break;
-		case doubleJump: Animator.Play("doubleJump", time); break;
-		case wallJump: Animator.Play("wallJump", time); break;
-		case stay: Animator.Play("stay", time); break;
-		case death: Animator.Play("death", time); break;
+	case walk: {
+		Animator.Play("walk", time); break;
+	}
+	case jump: {
+		Animator.Play("jump", time); break;
+	}
+	case fall: {
+		Animator.Play("fall", time); break;
+	}
+	case doubleJump: {
+		Animator.Play("doubleJump", time); break;
+	}
+	case wallJump: {
+		Animator.Play("wallJump", time); break;
+	}
+	case stay: {
+		Animator.Play("stay", time); break;
+	}
+	case death: {
+		Animator.Play("death", time); break;
+	}
+
 	}
 
 	bool finish = 0;
@@ -53,7 +74,17 @@ bool Player::update(float time, Level *lvl) {
 
 	sprite.setPosition(xPos + sprite.getGlobalBounds().width / 2, yPos + sprite.getGlobalBounds().height / 2);
 
-	if (health <= 0) { isAlive = false; }
+	if (health <= 0 && !isPlayed) {
+		dead();
+		state = death;
+
+		soundBuffer.loadFromFile("sounds/playerDied.ogg");
+		sound.setBuffer(soundBuffer);
+		sound.setVolume(100);
+		sound.play();
+
+		isPlayed = true;
+	}
 
 	return finish;
 }
@@ -63,12 +94,23 @@ bool Player::update(float time, Level *lvl) {
 
 void Player::controller(float time) {
 	if (isAlive) {
+		if (state == walk) {
+			if (!isWalk) {
+				walkSound.play(); isWalk = true;
+			}
+		}
+		else {
+			walkSound.pause();
+			isWalk = false;
+		}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 			if (onGround) { state = walk; }
 
 			dx = -speed;
 
 			facingRight = false;
+
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 			if (onGround) { state = walk; }
@@ -76,6 +118,7 @@ void Player::controller(float time) {
 			dx = speed;
 
 			facingRight = true;
+
 		}
 		else {
 			dx = 0;
@@ -94,9 +137,19 @@ void Player::controller(float time) {
 			dy = -Final::jumpForce; onGround = false;
 			if (countOfJump == 1) {
 				state = jump;
+
+				soundBuffer.loadFromFile("sounds/jump.ogg");
+				sound.setBuffer(soundBuffer);
+				sound.setVolume(100);
+				sound.play();
 			}
 			else if (countOfJump == 0) {
 				state = doubleJump;
+
+				soundBuffer.loadFromFile("sounds/doubleJump.ogg");
+				sound.setBuffer(soundBuffer);
+				sound.setVolume(100);
+				sound.play();
 			}
 			canJump = false;
 		}
@@ -202,7 +255,6 @@ bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 			//animation
 
 			return true;
-			lvl->getTileMap()[i][j] = ' ';
 
 		}
 

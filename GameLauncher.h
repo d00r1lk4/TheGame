@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameEngine.h"
 #include "Level.h"
@@ -45,6 +46,8 @@ class GameLauncher {
 private:
 	sf::RenderWindow* window;
 
+	sf::Music music;
+
 	sf::Clock gameUpdateClock;
 	sf::Clock Timer;
 
@@ -53,8 +56,8 @@ private:
 
 	bool isExit = false;
 
-
-	float checkPause() {
+	//pause audio
+	float checkPause(sf::Music &music) {
 		float time = gameUpdateClock.getElapsedTime().asMicroseconds();
 		gameUpdateClock.restart();
 		time /= Final::gameSpeed;
@@ -71,7 +74,12 @@ private:
 
 		if (pause % 2 == 1) {
 			time = 0;
+			music.pause();
 		}
+		if ((music.getStatus() == sf::Music::Paused) && time != 0) {
+			music.play();
+		}
+
 
 		return time;
 	}
@@ -83,7 +91,12 @@ private:
 
 
 public:
-	GameLauncher(sf::RenderWindow *window) : window(window) { }
+	GameLauncher(sf::RenderWindow *window) : window(window) {
+		music.openFromFile("sounds/levelMusic.ogg");
+		music.setVolume(10);
+		music.play();
+		music.setLoop(1);
+	}
 
 	bool LaunchGame(int &playerScore) {
 		std::vector<Level*> levels = setLevels();
@@ -95,7 +108,7 @@ public:
 
 		//
 		while (!checkExit()) {
-			float time = checkPause();
+			float time = checkPause(music);
 
 			player = dynamic_cast<Player*>(entities.front());
 
@@ -162,6 +175,7 @@ public:
 
 		Level::reset();
 		
+		music.stop();
 		return isExit ? false : true;
 	}
 

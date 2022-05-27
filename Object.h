@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Constants.h"
 
@@ -12,6 +13,12 @@ protected:
 	float xPos = 0.f, yPos = 0.f;
 
 	bool facingRight = true;
+
+
+	sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
+	bool isPlayed = false;
+
 
 	Object(sf::Image& image, float width, float height) {
 		texture.loadFromImage(image);

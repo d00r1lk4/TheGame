@@ -9,9 +9,8 @@
 class PhysicsEngine {
 private:
 
-
 public:
-	PhysicsEngine() {}
+	PhysicsEngine() { }
 
 	void Collision(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps) {
 		std::list<Entity*>::iterator entitiesIterator;
@@ -35,7 +34,7 @@ public:
 					}
 				}
 				else if (player->getDy() < -0.2f || player->checkGround()) {
-					player->dead();
+					player->hit();
 				}
 			}
 		}
@@ -52,7 +51,7 @@ public:
 		std::list<Traps*>::iterator trapsIterator;
 		for (trapsIterator = traps.begin(); trapsIterator != traps.end(); ++trapsIterator) {
 			if ((*trapsIterator)->getRect().intersects(player->getRect()) && player->checkAlive()) {
-				player->dead();
+				player->hit();
 			}
 		}
 	}

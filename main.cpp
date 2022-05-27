@@ -1,3 +1,4 @@
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <sstream>
 
@@ -81,7 +82,7 @@ int main() {
 	sf::Image icon;
 	icon.loadFromFile("images/icon.png");
 
-	//
+	//text
 	sf::Font font;
 	font.loadFromFile("fonts/pixel.ttf");
 
@@ -110,16 +111,32 @@ int main() {
 	versionText.setColor(sf::Color::White);
 	versionText.setPosition(window.getSize().x - 80, window.getSize().y - 20);
 
-	controlsText.setString("A, D - move\nSpace - jump\nESC - pause");
+	controlsText.setString("A, D - move\nSpace - jump\nESC - pause\nR - restart");
 	controlsText.setFont(font);
 	controlsText.setCharacterSize(16);
 	controlsText.setColor(sf::Color::White);
 	controlsText.setPosition(0, 0);
 
 	//
+
+	//sounds
+	sf::SoundBuffer soundBuffer;
+	sf::Music music;
+
+	soundBuffer.loadFromFile("sounds/switchMenu.ogg");
+	sf::Sound sound(soundBuffer);
+	sound.setVolume(20);
+
+	music.openFromFile("sounds/mainMenuMusic.ogg");
+	music.setVolume(50);
+	music.play();
+	music.setLoop(1);
+	//
+
 	int playerScore = 0;
 
 	int menuSelector = 0;
+	bool spam = false;
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -132,15 +149,27 @@ int main() {
 
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		if ( (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && !spam) {
 			newGameText.setColor(sf::Color::White);
 			exitText.setColor(sf::Color(100, 100, 100));
 			menuSelector = 0;
+
+			sound.play();
+
+			spam = true;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		if ( (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && !spam) {
 			newGameText.setColor(sf::Color(100, 100, 100));
 			exitText.setColor(sf::Color::White);
 			menuSelector = 1;
+
+			sound.play();
+
+			spam = true;
+		}
+		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
+			!sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ) {
+			spam = false;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
@@ -149,6 +178,7 @@ int main() {
 			case 0: {
 				GameLauncher* gameLauncher = new GameLauncher(&window);
 
+				music.stop();
 				bool isFinish = gameLauncher->LaunchGame(playerScore);
 
 				delete gameLauncher;
@@ -157,9 +187,16 @@ int main() {
 				window.setView(sf::View(sf::Vector2f(300, 300), sf::Vector2f(600, 600)));
 
 				if (isFinish) {
+					music.openFromFile("sounds/win.ogg");
+					music.play();
+					music.setLoop(0);
+
 					drawCongratulationsWindow(window, playerScore);
 				}
 
+				music.openFromFile("sounds/mainMenuMusic.ogg");
+				music.setLoop(1);
+				music.play();
 
 				menuSelector = -1;
 

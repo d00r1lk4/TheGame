@@ -5,8 +5,9 @@
   Constants.h
   Level.cpp
   main.cpp
+  Mushroom.cpp
   Player.cpp
   Spike.cpp
   Strawberry.cpp
   Создание кода...
-D:\Desktop\revive pls\TheGame\Strawberry.cpp : fatal error C1090: Произошел сбой при вызове API PDB, код ошибки "3": D:\Desktop\revive pls\TheGame\Debug\vc143.pdb
+  LernSFMLInVS15.vcxproj -> D:\Desktop\revive pls\TheGame\Debug\LernSFMLInVS15.exe

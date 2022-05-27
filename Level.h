@@ -3,6 +3,7 @@
 #include <list>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Entity;
 class Berries;
@@ -24,6 +25,10 @@ private:
 	float gameTime = 0;
 
 	bool isRealod = false;
+
+
+	sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
 
 
 	void copyLevel(sf::String* first, const sf::String* second);

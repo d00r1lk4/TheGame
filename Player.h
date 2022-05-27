@@ -20,6 +20,10 @@ private:
 
 	PlayerAnimation Animator{ this, 32, 32 };
 
+	sf::SoundBuffer walkBuffer;
+	sf::Sound walkSound;
+	bool isWalk = false;
+
 	sf::Image setRandomSprite();
 
 	void controller(float time);

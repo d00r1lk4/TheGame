@@ -114,6 +114,11 @@ std::list<Traps*> Level::getTraps() {
 }
 
 void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*> &levels) {
+	soundBuffer.loadFromFile("sounds/nextLevel.ogg");
+	sound.setBuffer(soundBuffer);
+	sound.setVolume(100);
+	sound.play();
+
 	Player* player = dynamic_cast<Player*>(entities.front());
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();
