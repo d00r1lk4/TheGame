@@ -13,5 +13,6 @@ sf::View setPlayerPosForCamera(float x, float y) {
 	if (y > 300) { tempY = 300; }	//down
 
 	playerCamera.setCenter(tempX, tempY - 136);
+	//playerCamera.setSize(sf::Vector2f(400, 400));
 	return playerCamera;
 }

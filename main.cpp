@@ -72,6 +72,7 @@ void drawCongratulationsWindow(sf::RenderWindow& window, int score) {
 int main() {
 	sf::RenderWindow window;
 
+	//window.create(sf::VideoMode(Final::rezolution, Final::rezolution), L"TheGame", sf::Style::Default);
 	window.create(sf::VideoMode(Final::rezolution, Final::rezolution), L"TheGame", sf::Style::Default);
 
 	window.setFramerateLimit(60);

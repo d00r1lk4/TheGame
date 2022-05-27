@@ -17,16 +17,20 @@
 #include <vector>
 
 
-#include "testMap.h"
-#include "testMap2.h"
-#include "testMap3.h"
+//#include "testMap.h"
+//#include "testMap2.h"
+//#include "testMap3.h"
+
+#include "FirstLevel.h"
 
 std::vector<Level*> setLevels() {
 	std::vector<Level*> levels {};
 
-	levels.push_back(new Level(TESTTileMap, TESTFinishTileMap, HEIGTH_TESTMAP, WIDTH_TESTMAP, 200));
-	levels.push_back(new Level(TESTTileMap2, TESTFinishTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
-	levels.push_back(new Level(TESTTileMap3, TESTFinishTileMap3, HEIGTH_TESTMAP3, WIDTH_TESTMAP3, 100));
+	//levels.push_back(new Level(TESTTileMap, TESTFinishTileMap, HEIGTH_TESTMAP, WIDTH_TESTMAP, 200));
+	//levels.push_back(new Level(TESTTileMap2, TESTFinishTileMap2, HEIGTH_TESTMAP2, WIDTH_TESTMAP2, 150));
+	//levels.push_back(new Level(TESTTileMap3, TESTFinishTileMap3, HEIGTH_TESTMAP3, WIDTH_TESTMAP3, 100));
+	 
+	levels.push_back(new Level(FirstTileMap, FirstFinishTileMap, HEIGTH_FIRST, WIDTH_FIRST, 200));
 
 
 
@@ -42,6 +46,8 @@ private:
 
 	int pause = 0;
 	bool spamESC = false;
+
+	bool isExit = false;
 
 
 	float checkPause() {
@@ -67,6 +73,7 @@ private:
 	}
 
 	bool checkExit() {
+		isExit = true;
 		return (pause % 2 == 1) && sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace);
 	}
 
@@ -150,7 +157,7 @@ public:
 
 		Level::reset();
 		
-		return true;
+		return isExit ? false : true;
 	}
 
 };

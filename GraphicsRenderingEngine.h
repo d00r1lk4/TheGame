@@ -82,7 +82,7 @@ private:
 
 	void RenderBackGround(sf::RenderWindow& window, Level* lvl) {
 		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
-			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
+			for (int j = 1, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
 				if (lvl->checkReload()) {
 					backgroundTexture.loadFromFile("images/Background/" + setRandomBackground());
 					lvl->checkReload() = false;
@@ -103,8 +103,30 @@ private:
 
 		for (int i = 0, backGroundCounti = 0; i < lvl->getHeigth(); ++i, ++backGroundCounti) {
 			for (int j = 0, backGroundCountj = 0; j < lvl->getWidth(); ++j, ++backGroundCountj) {
-				if (lvl->getTileMap()[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(320, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ' ') { mapSprite.setTextureRect(sf::IntRect(304, 0, 16, 16)); }
 
+				if (lvl->getTileMap()[i][j] == '`') { mapSprite.setTextureRect(sf::IntRect(320, 0, 16, 16)); }
+
+				//bricks
+				if (lvl->getTileMap()[i][j] == 'f') { mapSprite.setTextureRect(sf::IntRect(0, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '(') { mapSprite.setTextureRect(sf::IntRect(16, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ')') { mapSprite.setTextureRect(sf::IntRect(32, 32, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '$') { mapSprite.setTextureRect(sf::IntRect(0, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '%') { mapSprite.setTextureRect(sf::IntRect(16, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '&') { mapSprite.setTextureRect(sf::IntRect(32, 16, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '!') { mapSprite.setTextureRect(sf::IntRect(0, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'e') { mapSprite.setTextureRect(sf::IntRect(16, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '#') { mapSprite.setTextureRect(sf::IntRect(32, 0, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '*') { mapSprite.setTextureRect(sf::IntRect(48, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '+') { mapSprite.setTextureRect(sf::IntRect(64, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ',') { mapSprite.setTextureRect(sf::IntRect(48, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '-') { mapSprite.setTextureRect(sf::IntRect(64, 16, 16, 16)); }
+				//
+
+				//green grass
 				if (lvl->getTileMap()[i][j] == '0') { mapSprite.setTextureRect(sf::IntRect(96, 32, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == '1') { mapSprite.setTextureRect(sf::IntRect(112, 32, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == '2') { mapSprite.setTextureRect(sf::IntRect(128, 32, 16, 16)); }
@@ -117,6 +139,83 @@ private:
 				if (lvl->getTileMap()[i][j] == '7') { mapSprite.setTextureRect(sf::IntRect(112, 0, 16, 16)); }
 				if (lvl->getTileMap()[i][j] == '8') { mapSprite.setTextureRect(sf::IntRect(128, 0, 16, 16)); }
 
+				if (lvl->getTileMap()[i][j] == '9') { mapSprite.setTextureRect(sf::IntRect(144, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ':') { mapSprite.setTextureRect(sf::IntRect(160, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == ';') { mapSprite.setTextureRect(sf::IntRect(144, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '<') { mapSprite.setTextureRect(sf::IntRect(160, 16, 16, 16)); }
+				//
+
+				//yellow grass
+				if (lvl->getTileMap()[i][j] == 'A') { mapSprite.setTextureRect(sf::IntRect(192, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'B') { mapSprite.setTextureRect(sf::IntRect(208, 32, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'C') { mapSprite.setTextureRect(sf::IntRect(224, 32, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '>') { mapSprite.setTextureRect(sf::IntRect(192, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '?') { mapSprite.setTextureRect(sf::IntRect(208, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '@') { mapSprite.setTextureRect(sf::IntRect(224, 16, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '.') { mapSprite.setTextureRect(sf::IntRect(192, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '/') { mapSprite.setTextureRect(sf::IntRect(208, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '=') { mapSprite.setTextureRect(sf::IntRect(224, 0, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'D') { mapSprite.setTextureRect(sf::IntRect(240, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'E') { mapSprite.setTextureRect(sf::IntRect(256, 0, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'V') { mapSprite.setTextureRect(sf::IntRect(240, 16, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'G') { mapSprite.setTextureRect(sf::IntRect(256, 16, 16, 16)); }
+				//
+
+				//wood
+				if (lvl->getTileMap()[i][j] == 'N') { mapSprite.setTextureRect(sf::IntRect(0, 96, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'O') { mapSprite.setTextureRect(sf::IntRect(16, 96, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'Q') { mapSprite.setTextureRect(sf::IntRect(32, 96, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'K') { mapSprite.setTextureRect(sf::IntRect(0, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'L') { mapSprite.setTextureRect(sf::IntRect(16, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'M') { mapSprite.setTextureRect(sf::IntRect(32, 80, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'H') { mapSprite.setTextureRect(sf::IntRect(0, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'I') { mapSprite.setTextureRect(sf::IntRect(16, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'G') { mapSprite.setTextureRect(sf::IntRect(32, 64, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'R') { mapSprite.setTextureRect(sf::IntRect(48, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'S') { mapSprite.setTextureRect(sf::IntRect(64, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'T') { mapSprite.setTextureRect(sf::IntRect(48, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'U') { mapSprite.setTextureRect(sf::IntRect(64, 80, 16, 16)); }
+				//
+
+				//golden box
+				if (lvl->getTileMap()[i][j] == 'g') { mapSprite.setTextureRect(sf::IntRect(192, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'h') { mapSprite.setTextureRect(sf::IntRect(208, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'i') { mapSprite.setTextureRect(sf::IntRect(224, 64, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'j') { mapSprite.setTextureRect(sf::IntRect(192, 80, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'k') { mapSprite.setTextureRect(sf::IntRect(208, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'l') { mapSprite.setTextureRect(sf::IntRect(224, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'n') { mapSprite.setTextureRect(sf::IntRect(208, 96, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'o') { mapSprite.setTextureRect(sf::IntRect(224, 96, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'q') { mapSprite.setTextureRect(sf::IntRect(240, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'r') { mapSprite.setTextureRect(sf::IntRect(240, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 't') { mapSprite.setTextureRect(sf::IntRect(240, 96, 16, 16)); }
+				//
+
+				//golden box
+				if (lvl->getTileMap()[i][j] == 'u') { mapSprite.setTextureRect(sf::IntRect(272, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'v') { mapSprite.setTextureRect(sf::IntRect(288, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'w') { mapSprite.setTextureRect(sf::IntRect(304, 64, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'x') { mapSprite.setTextureRect(sf::IntRect(272, 80, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == 'y') { mapSprite.setTextureRect(sf::IntRect(288, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'z') { mapSprite.setTextureRect(sf::IntRect(304, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '{') { mapSprite.setTextureRect(sf::IntRect(288, 96, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '|') { mapSprite.setTextureRect(sf::IntRect(304, 96, 16, 16)); }
+
+				if (lvl->getTileMap()[i][j] == '}') { mapSprite.setTextureRect(sf::IntRect(320, 64, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == '~') { mapSprite.setTextureRect(sf::IntRect(320, 80, 16, 16)); }
+				if (lvl->getTileMap()[i][j] == 'X') { mapSprite.setTextureRect(sf::IntRect(320, 96, 16, 16)); }
+				//
 
 				if (lvl->getTileMap()[i][j] == 'F' || lvl->getTileMap()[i][j] == 'W') {
 					mapSprite.setTextureRect(sf::IntRect(0/* 18 * static_cast<int>(currentFrame) */, 112, 16, 16));
@@ -224,7 +323,8 @@ public:
 		pauseSprite.setScale(38, 38);
 
 
-		playerCamera.reset(sf::FloatRect(0, 0, Final::rezolution, Final::rezolution));
+		//playerCamera.reset(sf::FloatRect(-60, -70, Final::rezolution, Final::rezolution));
+		playerCamera.reset(sf::FloatRect(-60, -170, Final::rezolution, Final::rezolution));
 	}
 
 	void Render(sf::RenderWindow &window, Level *lvl, std::list<Entity*> &entities, std::list<Berries*>& berries, std::list<Traps*>& traps, float time) {
@@ -239,7 +339,7 @@ public:
 		//RanderParticles(window, entities.front());
 
 		if (entities.front()->checkAlive()) {
-			setPlayerPosForCamera(entities.front()->getSprite().getPosition().x, entities.front()->getSprite().getPosition().y);
+			//setPlayerPosForCamera(entities.front()->getSprite().getPosition().x, entities.front()->getSprite().getPosition().y);
 			window.setView(playerCamera);
 		}
 

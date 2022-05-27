@@ -58,6 +58,9 @@
     <Filter Include="Заголовочные файлы\Levels\Maps\TEST%28dont use!%29">
       <UniqueIdentifier>{94e18e48-a948-4b89-9f76-6cdaa8a04e2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Levels\Maps\NEW">
+      <UniqueIdentifier>{a425bde2-c640-40bf-81b9-5025f96599a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -181,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="MushroomAnimation.h">
       <Filter>Заголовочные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstLevel.h">
+      <Filter>Заголовочные файлы\Levels\Maps\NEW</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondLevel.h">
+      <Filter>Заголовочные файлы\Levels\Maps\NEW</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

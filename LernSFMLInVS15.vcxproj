@@ -212,10 +212,13 @@
     <ClInclude Include="BerriesAnimation.h" />
     <ClInclude Include="BlueBird.h" />
     <ClInclude Include="BlueBirdAnimation.h" />
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Camera.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Cherries.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FirstLevel.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameLauncher.h" />
     <ClInclude Include="GraphicsRenderingEngine.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="MushroomAnimation.h" />
     <ClInclude Include="PlayerAnimation.h" />
+    <ClInclude Include="SecondLevel.h" />
     <ClInclude Include="Spike.h" />
     <ClInclude Include="Strawberry.h" />
     <ClInclude Include="testMap.h" />
