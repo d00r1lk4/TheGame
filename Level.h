@@ -13,6 +13,8 @@ class Level {
 private:
 	static int currentLevel;
 
+	bool isAlreadyUpdated = false;
+
 	int HEIGTH = 0;
 	int WIDTH = 0;
 

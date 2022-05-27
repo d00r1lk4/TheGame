@@ -120,6 +120,8 @@ void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std
 	sound.play();
 
 	Player* player = dynamic_cast<Player*>(entities.front());
+	player->stopSounds();
+
 	if (currentLevel != player->getCurrentLevel()) {
 		int score = player->getScore();
 		currentLevel = player->getCurrentLevel();
@@ -138,8 +140,6 @@ void Level::Next(std::list<Entity*> &entities, std::list<Berries*>& berries, std
 }
 
 void Level::Update(std::list<Entity*>& entities) {
-	static bool isAlreadyUpdated = true;
-
 	std::list<Entity*>::iterator entitiesIterator;
 	for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
 		if ((*entitiesIterator)->checkAlive()) {
@@ -147,7 +147,7 @@ void Level::Update(std::list<Entity*>& entities) {
 		}
 	}
 
-	if (isAlreadyUpdated) {
+	if (!isAlreadyUpdated) {
 		copyLevel(TileMap, ConstFinishTileMap);
 		isAlreadyUpdated = true;
 	}
@@ -177,6 +177,11 @@ void Level::clearTraps(std::list<Traps*>& traps) {
 void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, std::vector<Level*>& levels, int score) {
 	isRealod = true;
 
+	isAlreadyUpdated = false;
+
+	Player* player = dynamic_cast<Player*>(entities.front());
+	player->stopSounds();
+
 	clearEntities(entities);
 	clearBerries(berries);
 	clearTraps(traps);
@@ -187,7 +192,7 @@ void Level::reload(std::list<Entity*>& entities, std::list<Berries*>& berries, s
 	berries = levels[Level::getCurrentLevel()]->getBerries();
 	traps = levels[Level::getCurrentLevel()]->getTraps();
 
-	Player* player = dynamic_cast<Player*>(entities.front());
+	player = dynamic_cast<Player*>(entities.front());
 
 	player->setLevel(Level::getCurrentLevel());
 	

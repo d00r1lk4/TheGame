@@ -57,4 +57,6 @@ public:
 	void revive() {
 		isAlive = true;
 	}
+
+	void stopSounds();
 };

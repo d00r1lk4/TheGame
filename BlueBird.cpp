@@ -23,8 +23,8 @@ bool BlueBird::checkBoundsOfMap(float Dx, float Dy, Level* lvl) {
 				if (Dy > 0.f) { setPosY(i * Final::tilesRezolution - sprite.getGlobalBounds().height); }
 				if (Dy < 0.f) { setPosY((i - 1) * Final::tilesRezolution + sprite.getGlobalBounds().height); }
 
-				if (Dx > 0) { setPosX(j * Final::tilesRezolution - sprite.getGlobalBounds().width); dx = -speed; sprite.scale(-1, 1); sound.play(); }
-				if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); dx = speed; sprite.scale(-1, 1); sound.play(); }
+				if (Dx > 0) { setPosX(j * Final::tilesRezolution - sprite.getGlobalBounds().width); dx = -speed; facingRight = true; sound.play(); }
+				if (Dx < 0) { setPosX((j - 1) * Final::tilesRezolution + sprite.getGlobalBounds().width); dx = speed; facingRight = false; sound.play(); }
 			}
 		}
 

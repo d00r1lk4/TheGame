@@ -56,9 +56,9 @@ public:
 		}
 	}
 	bool Update(float time, std::list<Entity*>& entities, std::list<Berries*>& berries, std::list<Traps*>& traps, Level *lvl) {
-		std::list<Entity*>::iterator entitiesIterator;
 		Player* player = dynamic_cast<Player*>(entities.front());
 		//UPDATE
+		std::list<Entity*>::iterator entitiesIterator;
 		for (entitiesIterator = ++entities.begin(); entitiesIterator != entities.end(); ++entitiesIterator) {
 			(*entitiesIterator)->update(time, lvl);
 		}

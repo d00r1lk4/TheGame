@@ -100,8 +100,7 @@ void Player::controller(float time) {
 			}
 		}
 		else {
-			walkSound.pause();
-			isWalk = false;
+			stopSounds();
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
@@ -159,6 +158,8 @@ void Player::controller(float time) {
 		state = death;
 		time = 0;
 		dx = 0; dy = 0;
+
+		stopSounds();
 	}
 }
 bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
@@ -254,6 +255,8 @@ bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 		if (lvl->getTileMap()[i][j] == 'W') {
 			//animation
 
+			stopSounds();
+
 			return true;
 
 		}
@@ -265,4 +268,9 @@ bool Player::checkBoundsOfMap(float Dx, float Dy, Level *lvl) {
 
 int Player::getScore() {
 	return playerScore;
+}
+
+void Player::stopSounds() {
+	walkSound.pause();
+	isWalk = false;
 }
